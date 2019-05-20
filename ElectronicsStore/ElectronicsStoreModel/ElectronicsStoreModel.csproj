@@ -48,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="OrderPayment.cs" />
-    <Compile Include="OrderProduct.cs" />
-    <Compile Include="OrderStatus.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Indent.cs" />
+    <Compile Include="IndentPayment.cs" />
+    <Compile Include="IndentProduct.cs" />
+    <Compile Include="IndentStatus.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

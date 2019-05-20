@@ -15,6 +15,6 @@ namespace ElectronicsStoreModel
         public decimal Price { get; set; }
 
         [ForeignKey("ProductId")]
-        public virtual List<OrderProduct> OrderProducts { get; set; }
+        public virtual List<IndentProduct> IndentProducts { get; set; }
     }
 }

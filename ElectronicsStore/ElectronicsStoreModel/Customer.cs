@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ElectronicsStoreModel
 {
-    public class Client
+    public class Customer
     {
         public int Id { get; set; }
 
         [Required]
-        public string ClientFIO { get; set; }
+        public string CustomerFIO { get; set; }
 
         [Required]
         public string Login { get; set; }
@@ -23,12 +23,12 @@ namespace ElectronicsStoreModel
 
         [Required]
         public DateTime DateRegistration { get; set; }
-
+        [Required]
         public int Bonus { get; set; }
+        [Required]
+        public bool CustomerStatus { get; set; }
 
-        public bool ClientStatus { get; set; }
-
-        [ForeignKey("ClientId")]
-        public virtual List<Order> Orders { get; set; }
+        [ForeignKey("CustomerId")]
+        public virtual List<Indent> Indents { get; set; }
     }
 }

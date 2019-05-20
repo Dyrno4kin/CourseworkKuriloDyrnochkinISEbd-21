@@ -3,11 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ElectronicsStoreModel
 {
-    public class OrderPayment
+    public class IndentPayment
     {
+        [Required]
         public int Id { get; set; }
 
-        public int OrderId { get; set; }
+        [Required]
+        public int IndentId { get; set; }
 
         [Required]
         public DateTime DatePayment { get; set; }
@@ -15,6 +17,6 @@ namespace ElectronicsStoreModel
         [Required]
         public decimal SumPayment { get; set; }
 
-        public virtual Order Order { get; set; }
+        public virtual Indent Indent { get; set; }
     }
 }

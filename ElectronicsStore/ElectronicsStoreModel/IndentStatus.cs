@@ -1,6 +1,6 @@
 ﻿namespace ElectronicsStoreModel
 {
-    public enum OrderStatus
+    public enum IndentStatus
     {
         Принят = 0,
         Готов = 1,
