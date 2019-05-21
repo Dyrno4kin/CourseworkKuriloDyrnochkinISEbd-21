@@ -13,8 +13,6 @@ namespace ElectronicsStoreServiceDAL.BindingModel
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        public string IngredientName { get; set; }
-        [DataMember]
         public int IndentId { get; set; }
         [DataMember]
         public int ProductId { get; set; }

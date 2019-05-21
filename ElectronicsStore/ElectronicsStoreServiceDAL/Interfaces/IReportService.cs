@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ElectronicsStoreServiceDAL.Interfaces
 {
     [UsageInterface("Интерфейс для работы с отчётами")]
-    public interface IReptService
+    public interface IReportService
     {
         [UsageMethod("Метод добавления отчёта")]
         void SaveProductPrice(ReptBindingModel model);

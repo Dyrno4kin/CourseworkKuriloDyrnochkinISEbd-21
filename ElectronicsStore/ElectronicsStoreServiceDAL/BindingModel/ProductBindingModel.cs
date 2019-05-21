@@ -18,7 +18,5 @@ namespace ElectronicsStoreServiceDAL.BindingModel
         public string ProductName { get; set; }
         [DataMember]
         public decimal Price { get; set; }
-        [DataMember]
-        public List<IndentProductBindingModel> IndentProducts { get; set; }
     }
 }

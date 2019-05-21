@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace ElectronicsStoreServiceDAL.Interfaces
 {
-    [UsageInterface("Интерфейс для работы с пиццами")]
+    [UsageInterface("Интерфейс для работы с продуктами")]
     public interface IProductService
     {
         [UsageMethod("Метод получения списка продуктов")]
         List<ProductViewModel> GetList();
         [UsageMethod("Метод получения продукта по id")]
         ProductViewModel GetElement(int id);
-        [UsageMethod("Метод добавления пицц")]
+        [UsageMethod("Метод добавления продукта")]
         void AddElement(ProductBindingModel model);
-        [UsageMethod("Метод изменения данных по пицце")]
+        [UsageMethod("Метод изменения данных по продукту")]
         void UpdElement(ProductBindingModel model);
-        [UsageMethod("Метод удаления пицц")]
+        [UsageMethod("Метод удаления продукта")]
         void DelElement(int id);
     }
 }

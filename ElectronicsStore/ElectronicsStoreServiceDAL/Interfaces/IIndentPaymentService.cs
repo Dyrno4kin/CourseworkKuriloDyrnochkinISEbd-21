@@ -13,9 +13,9 @@ namespace ElectronicsStoreServiceDAL.Interfaces
     public interface IIndentPaymentService
     {
         [UsageMethod("Метод получения списка оплат")]
-        List<IngredientViewModel> GetList();
+        List<IndentPaymentViewModel> GetList();
         [UsageMethod("Метод получения оплаты по id")]
-        IngredientViewModel GetElement(int id);
+        IndentPaymentViewModel GetElement(int id);
         [UsageMethod("Метод добавления оплаты")]
         void AddElement(IndentPaymentBindingModel model);
         [UsageMethod("Метод изменения оплат по заказу")]
