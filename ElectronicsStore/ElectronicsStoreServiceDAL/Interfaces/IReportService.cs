@@ -14,8 +14,6 @@ namespace ElectronicsStoreServiceDAL.Interfaces
     {
         [UsageMethod("Метод добавления отчёта")]
         void SaveProductPrice(ReptBindingModel model);
-        [UsageMethod("Метод получения списка отчётов")]
-        List<StoragesLoadViewModel> GetStoragesLoad();
         [UsageMethod("Метод получения отчёта по id")]
         void SaveStoragesLoad(ReptBindingModel model);
         [UsageMethod("Метод получения списка отчётов")]
