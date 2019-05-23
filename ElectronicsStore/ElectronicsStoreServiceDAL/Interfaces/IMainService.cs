@@ -14,11 +14,7 @@ namespace ElectronicsStoreServiceDAL.Interfaces
     {
         [UsageMethod("Метод получения списка заказов")]
         List<IndentViewModel> GetList();
-        [UsageMethod("Метод получения списка свободных заказов")]
-        List<IndentViewModel> GetFreeIndents();
         [UsageMethod("Метод добавления заказа")]
         void CreateIndent(IndentBindingModel model);
-        [UsageMethod("Метод получения оплаты заказа")]
-        void PayIndent(IndentPaymentBindingModel model);
     }
 }

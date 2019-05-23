@@ -10,12 +10,10 @@ using System.Threading.Tasks;
 namespace ElectronicsStoreServiceDAL.Interfaces
 {
     [UsageInterface("Интерфейс для работы с отчётами")]
-    public interface IReportService
+    public interface IReptService
     {
         [UsageMethod("Метод добавления отчёта")]
         void SaveProductPrice(ReptBindingModel model);
-        [UsageMethod("Метод получения отчёта по id")]
-        void SaveStoragesLoad(ReptBindingModel model);
         [UsageMethod("Метод получения списка отчётов")]
         List<CustomerIndentViewModel> GetCustomerIndents(ReptBindingModel model);
         [UsageMethod("Метод получения отчёта по id")]
