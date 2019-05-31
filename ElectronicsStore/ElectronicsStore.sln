@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicsStoreServiceDAL"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicsStoreServiceImplementDataBase", "ElectronicsStoreServiceImplementDataBase\ElectronicsStoreServiceImplementDataBase.csproj", "{5B3D62A7-C576-491C-AE5B-699C521AFDC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicsStoreAdminView", "ElectronicsStoreAdminView\ElectronicsStoreAdminView.csproj", "{0B04C907-779B-4698-850D-3F939769D021}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5B3D62A7-C576-491C-AE5B-699C521AFDC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B3D62A7-C576-491C-AE5B-699C521AFDC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B3D62A7-C576-491C-AE5B-699C521AFDC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B04C907-779B-4698-850D-3F939769D021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B04C907-779B-4698-850D-3F939769D021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B04C907-779B-4698-850D-3F939769D021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B04C907-779B-4698-850D-3F939769D021}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
