@@ -11,6 +11,7 @@ namespace ElectronicsStoreServiceDAL.ViewModel
         public int IndentId { get; set; }
         [DataMember]
         public int ProductId { get; set; }
+        public string ProductName { get; set; }
         [DataMember]
         public int Count { get; set; }
     }

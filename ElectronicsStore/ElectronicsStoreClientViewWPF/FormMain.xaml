@@ -1,0 +1,31 @@
+﻿<Window x:Class="ElectronicsStoreClientViewWPF.FormMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElectronicsStoreClientViewWPF"
+        mc:Ignorable="d"
+        Title="Магазин электроники" Height="346.755" Width="1063.547">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="617*"/>
+            <ColumnDefinition Width="457*"/>
+        </Grid.ColumnDefinitions>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="1047" Margin="10,0,0,0" Grid.ColumnSpan="2">
+            <MenuItem Header="Справочники" Height="22" Width="105" Click="MenuItem_Click">
+                <MenuItem Header="Товары" HorizontalAlignment="Left" Height="28" Width="135" Margin="0,0,-21,0" Click="товарыToolStripMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Отчеты" Height="22" Width="100">
+                <MenuItem Header="Список товаров doc" Height="32" Margin="0,0,-62,0" HorizontalAlignment="Left" Width="204" Click="списокТоваровWToolStripMenuItem_Click"/>
+                <MenuItem Header="Список товаров xls" HorizontalAlignment="Left" Height="31" Width="192" Margin="0,0,-50,0" Click="списокТоваровEToolStripMenuItem_Click"/>
+                <MenuItem Header="Отчеты по заказам" Height="42" Margin="-3,0,-147,0" RenderTransformOrigin="1.215,0.743" HorizontalAlignment="Left" Width="325" Click="отчетToolStripMenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="dataGridViewMain" HorizontalAlignment="Left" Height="272" Margin="14,35,0,0" VerticalAlignment="Top" Width="880" IsReadOnly="True" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonCreateOrder" Content="Создать заказ" HorizontalAlignment="Left" Margin="301.208,35,0,0" VerticalAlignment="Top" Width="138" Height="28" Click="buttonCreateOrder_Click" Grid.Column="1"/>
+        <Button x:Name="buttonRef" Content="Обновить список" HorizontalAlignment="Left" Margin="301.208,279,0,0" VerticalAlignment="Top" Width="138" Height="28" Click="buttonRef_Click" Grid.Column="1"/>
+        <Button x:Name="buttonPayPolnost" Content="Оплатить полностью" HorizontalAlignment="Left" VerticalAlignment="Top" Width="138" Margin="301.208,203,0,0" Height="28" Click="buttonPayPolnost_Click" Grid.Column="1"/>
+        <Button x:Name="buttonPayChastich" Content="Оплатить частично" HorizontalAlignment="Left" VerticalAlignment="Top" Width="138" Margin="301.208,122,0,0" Height="28" Click="buttonPayChastich_Click" Grid.Column="1"/>
+
+    </Grid>
+</Window>
