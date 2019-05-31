@@ -72,12 +72,12 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             element.Email = model.Email;
             context.SaveChanges();
         }
-        public void DelElement(int id)
+        public void Block(CustomerBindingModel model)
         {
-            Customer element = context.Customers.FirstOrDefault(rec => rec.Id == id);
+            Customer element = context.Customers.FirstOrDefault(rec => rec.CustomerFIO == model.CustomerFIO && rec.Id != model.Id);
             if (element != null)
             {
-                context.Customers.Remove(element);
+                element.CustomerStatus=true;
                 context.SaveChanges();
             }
             else

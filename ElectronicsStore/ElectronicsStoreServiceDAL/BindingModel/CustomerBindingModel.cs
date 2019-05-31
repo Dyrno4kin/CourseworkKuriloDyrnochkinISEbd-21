@@ -18,5 +18,9 @@ namespace ElectronicsStoreServiceDAL.BindingModel
         public string Password { get; set; }
         [DataMember]
         public string Email { get; set; }
+        [DataMember]
+        public bool CustomerStatus { get; set; }
+        [DataMember]
+        public List<IndentBindingModel> Indents { get; set; }
     }
 }

@@ -89,7 +89,8 @@ namespace ElectronicsStoreClientViewWPF
                         CustomerFIO = textBoxFIO.Text,
                         Login = login,
                         Password = pass,
-                        Email = mail
+                        Email = mail,
+                        CustomerStatus = false
                     });
                 }
                 MessageBox.Show("Регистрация прошла успешно", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);

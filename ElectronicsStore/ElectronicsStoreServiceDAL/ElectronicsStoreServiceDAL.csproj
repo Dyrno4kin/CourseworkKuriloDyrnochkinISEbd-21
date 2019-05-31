@@ -51,6 +51,7 @@
     <Compile Include="BindingModel\ReptBindingModel.cs" />
     <Compile Include="Interfaces\ICustomerService.cs" />
     <Compile Include="Interfaces\IIndentPaymentService.cs" />
+    <Compile Include="Interfaces\IIndentProductService.cs" />
     <Compile Include="Interfaces\IMainService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IReptService.cs" />

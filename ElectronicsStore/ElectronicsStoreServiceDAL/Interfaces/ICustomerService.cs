@@ -20,7 +20,7 @@ namespace ElectronicsStoreServiceDAL.Interfaces
         void AddElement(CustomerBindingModel model);
         [UsageMethod("Метод изменения данных по клиенту")]
         void UpdElement(CustomerBindingModel model);
-        [UsageMethod("Метод удаления клиента")]
-        void DelElement(int id);
+        [UsageMethod("Метод блокировки клиента")]
+        void Block(CustomerBindingModel model);
     }
 }
