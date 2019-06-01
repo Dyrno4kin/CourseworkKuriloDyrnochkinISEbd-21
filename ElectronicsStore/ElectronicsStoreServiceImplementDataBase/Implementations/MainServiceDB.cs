@@ -29,7 +29,7 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                 Id = rec.Id,
                 CustomerId = rec.CustomerId,
                 DateCreate = SqlFunctions.DateName("dd", rec.DateCreate),
-                Status = rec.Status.ToString(),
+                Status = rec.Status,
                 Sum = rec.Sum,
                 CustomerFIO = rec.Customer.CustomerFIO,
 
@@ -139,7 +139,7 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                     Id = rec.Id,
                     CustomerId = rec.CustomerId,
                     DateCreate = SqlFunctions.DateName("dd", rec.DateCreate),
-                    Status = rec.Status.ToString(),
+                    Status = rec.Status,
                     Sum = rec.Sum,
                     CustomerFIO = rec.Customer.CustomerFIO,
 
@@ -161,7 +161,7 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                     Id = recPC.Id,
                     IndentId = recPC.IndentId,
                     DatePayment = recPC.DatePayment,
-                    SumPayment = recPC.SumPayment,
+                    SumPayment = recPC.SumPayment
                 })
                 .ToList()
                 };
@@ -186,7 +186,7 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                     Id = recPC.Id,
                     IndentId = recPC.IndentId,
                     DatePayment = recPC.DatePayment,
-                    SumPayment = recPC.SumPayment,
+                    SumPayment = recPC.SumPayment
                 })
                 .ToList()
                 };

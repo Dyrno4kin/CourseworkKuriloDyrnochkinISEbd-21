@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ElectronicsStoreModel;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace ElectronicsStoreServiceDAL.ViewModel
@@ -17,7 +18,7 @@ namespace ElectronicsStoreServiceDAL.ViewModel
         [DataMember]
         public decimal Sum { get; set; }
         [DataMember]
-        public string Status { get; set; }
+        public IndentStatus Status { get; set; }
         [DataMember]
         public string DateCreate { get; set; }
         [DataMember]

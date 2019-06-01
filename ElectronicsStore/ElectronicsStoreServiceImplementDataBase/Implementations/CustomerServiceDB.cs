@@ -23,7 +23,11 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             {
                 Id = rec.Id,
                 CustomerFIO = rec.CustomerFIO,
-                Email = rec.Email
+                Email = rec.Email,
+                Bonus = rec.Bonus,
+                Password = rec.Password,
+                Login = rec.Login,
+                CustomerStatus = rec.CustomerStatus
             })
             .ToList();
             return result;
@@ -37,7 +41,23 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                 {
                     Id = element.Id,
                     CustomerFIO = element.CustomerFIO,
-                    Email = element.Email
+                    Email = element.Email,
+                    Bonus = element.Bonus,
+                    Password = element.Password,
+                    Login = element.Login,
+                    CustomerStatus = element.CustomerStatus,
+                    
+                    Indents = element.Indents
+                .Where(recPC => recPC.CustomerId == element.Id)
+                .Select(recPC => new IndentViewModel
+                {
+                    Id = recPC.Id,
+                    CustomerId = recPC.CustomerId,
+                    Status = recPC.Status
+                })
+                .ToList(),
+
+
                 };
             }
             throw new Exception("Элемент не найден");
@@ -51,7 +71,11 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                 {
                     Id = element.Id,
                     CustomerFIO = element.CustomerFIO,
-                    Email = element.Email
+                    Email = element.Email,
+                    Bonus = element.Bonus,
+                    Password = element.Password,
+                    Login = element.Login,
+                    CustomerStatus = element.CustomerStatus
                 };
             }
             throw new Exception("Элемент не найден");
