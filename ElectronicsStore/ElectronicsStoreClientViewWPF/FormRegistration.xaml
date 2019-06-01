@@ -8,7 +8,7 @@
         Title="Регистрация" Height="284.112" Width="266.394">
     <Grid Margin="0,0,2.094,6.132">
         <TextBox x:Name="textBoxFIO" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Margin="90,72,0,0"/>
-        <TextBox x:Name="textBoxPass" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Margin="90,111,0,0" TextChanged="TextBoxPass_TextChanged"/>
+        <TextBox x:Name="textBoxPass" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Margin="90,111,0,0"/>
         <TextBox x:Name="textBoxMail" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Margin="90,149,0,0"/>
         <Label Content="Логин:" HorizontalAlignment="Left" Margin="7,30,0,0" VerticalAlignment="Top" Width="78"/>
         <Label Content="Пароль:" HorizontalAlignment="Left" Margin="7,111,0,0" VerticalAlignment="Top" Width="78"/>

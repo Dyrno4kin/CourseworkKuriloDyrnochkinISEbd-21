@@ -82,6 +82,7 @@
             this.Controls.Add(this.dataGridView);
             this.Name = "FormCustomers";
             this.Text = "Список клиентов";
+            this.Load += new System.EventHandler(this.FormCustomers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

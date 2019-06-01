@@ -29,7 +29,7 @@ namespace ElectronicsStoreClientViewWPF
 
 
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxLogin.Text))
             {
@@ -105,7 +105,7 @@ namespace ElectronicsStoreClientViewWPF
             Close();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
             Close();

@@ -32,11 +32,12 @@ namespace ElectronicsStoreClientViewWPF
 
         private CustomerViewModel customer;
 
-        public FormMain(IMainService service, IReptService reportService)
+        public FormMain(IMainService service, IReptService reportService, ICustomerService customerService)
         {
             InitializeComponent();
             this.service = service;
             this.reportService = reportService;
+            this.customerService = customerService;
         }
 
         private void LoadData()
@@ -60,13 +61,13 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void товарыToolStripMenuItem_Click(object sender, EventArgs e)
+        private void товарыToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
             var form = Container.Resolve<FormProducts>();
             form.ShowDialog();
         }
 
-        private void buttonCreateOrder_Click(object sender, EventArgs e)
+        private void buttonCreateOrder_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -82,7 +83,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonPayPolnost_Click(object sender, EventArgs e)
+        private void buttonPayPolnost_Click(object sender, RoutedEventArgs e)
         {
             if (dataGridViewMain.SelectedItem != null)
             {
@@ -111,7 +112,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonPayChastich_Click(object sender, EventArgs e)
+        private void buttonPayChastich_Click(object sender, RoutedEventArgs e)
         {
             if (dataGridViewMain.SelectedItem != null)
             {
@@ -140,7 +141,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonRef_Click(object sender, EventArgs e)
+        private void buttonRef_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -153,7 +154,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void списокТоваровWToolStripMenuItem_Click(object sender, EventArgs e)
+        private void списокТоваровWToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog
             {
@@ -164,7 +165,7 @@ namespace ElectronicsStoreClientViewWPF
             {
                 try
                 {
-                    reportService.SaveProductPrice(new ReptBindingModel
+                    reportService.SaveProductPriceW(new ReptBindingModel
                     {
                         FileName = sfd.FileName
                     });
@@ -177,7 +178,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void списокТоваровEToolStripMenuItem_Click(object sender, EventArgs e)
+        private void списокТоваровEToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog
             {
@@ -199,10 +200,11 @@ namespace ElectronicsStoreClientViewWPF
                 }
             }
         }
-        private void отчетToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void отчетToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var form = Container.Resolve<FormCustomerIndents>();
-            form.ShowDialog();
+            //var form = Container.Resolve<FormCustomerIndents>();
+           // form.ShowDialog();
         }
     }
 }

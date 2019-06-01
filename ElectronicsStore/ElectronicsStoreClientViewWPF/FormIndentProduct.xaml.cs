@@ -38,7 +38,7 @@ namespace ElectronicsStoreClientViewWPF
             this.service = service;
         }
 
-        private void FormIndentProduct_Load(object sender, EventArgs e)
+        private void FormIndentProduct_Load(object sender, RoutedEventArgs e)
         {
             List<ProductViewModel> list = service.GetList();
             try
@@ -70,7 +70,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxCount.Text))
             {
@@ -107,7 +107,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
             Close();

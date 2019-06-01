@@ -29,7 +29,7 @@ namespace ElectronicsStoreAdminView
             this.service = service;
         }
 
-        private void FormIngredient_Load(object sender, EventArgs e)
+        private void FormProduct_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
@@ -40,20 +40,26 @@ namespace ElectronicsStoreAdminView
                     {
                         textBoxName.Text = view.ProductName;
                         textBoxPrice.Text = view.Price.ToString();
+                        
                     }
                 }
                 catch (Exception ex)
                 {
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
                 }
             }
         }
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxName.Text))
             {
-                MessageBox.Show("Заполните ФИО", "Ошибка", MessageBoxButtons.OK,
+                MessageBox.Show("Заполните наименование", "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
                 return;
             }
@@ -98,5 +104,6 @@ namespace ElectronicsStoreAdminView
             DialogResult = DialogResult.Cancel;
             Close();
         }
+        
     }
 }

@@ -49,6 +49,7 @@
             this.Controls.Add(this.dataGridView);
             this.Name = "FormIndentProduct";
             this.Text = "Товары заказа";
+            this.Load += new System.EventHandler(this.FormIndentProducts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

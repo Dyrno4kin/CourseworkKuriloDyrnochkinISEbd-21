@@ -16,13 +16,13 @@ namespace ElectronicsStoreClientViewWPF
         {
             InitializeComponent();
         }
-        private void buttonReg_Click(object sender, EventArgs e)
+        private void buttonReg_Click(object sender, RoutedEventArgs e)
         {
             var form = Container.Resolve<FormRegistration>();
             form.ShowDialog();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
             var form = Container.Resolve<FormLogin>();
             form.ShowDialog();

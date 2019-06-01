@@ -12,13 +12,13 @@
             <ColumnDefinition Width="457*"/>
         </Grid.ColumnDefinitions>
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="1047" Margin="10,0,0,0" Grid.ColumnSpan="2">
-            <MenuItem Header="Справочники" Height="22" Width="105" Click="MenuItem_Click">
+            <MenuItem Header="Справочники" Height="22" Width="105">
                 <MenuItem Header="Товары" HorizontalAlignment="Left" Height="28" Width="135" Margin="0,0,-21,0" Click="товарыToolStripMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="Отчеты" Height="22" Width="100">
                 <MenuItem Header="Список товаров doc" Height="32" Margin="0,0,-62,0" HorizontalAlignment="Left" Width="204" Click="списокТоваровWToolStripMenuItem_Click"/>
                 <MenuItem Header="Список товаров xls" HorizontalAlignment="Left" Height="31" Width="192" Margin="0,0,-50,0" Click="списокТоваровEToolStripMenuItem_Click"/>
-                <MenuItem Header="Отчеты по заказам" Height="42" Margin="-3,0,-147,0" RenderTransformOrigin="1.215,0.743" HorizontalAlignment="Left" Width="325" Click="отчетToolStripMenuItem_Click"/>
+                <MenuItem Header="Отчеты по заказам" Height="34" Margin="-1,0,-38.8,0" RenderTransformOrigin="1.215,0.743" HorizontalAlignment="Left" Width="215" Click="отчетToolStripMenuItem_Click"/>
             </MenuItem>
         </Menu>
         <DataGrid x:Name="dataGridViewMain" HorizontalAlignment="Left" Height="272" Margin="14,35,0,0" VerticalAlignment="Top" Width="880" IsReadOnly="True" Grid.ColumnSpan="2"/>

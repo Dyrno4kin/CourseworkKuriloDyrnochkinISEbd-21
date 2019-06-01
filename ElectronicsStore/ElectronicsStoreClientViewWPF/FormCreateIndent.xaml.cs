@@ -34,7 +34,7 @@ namespace ElectronicsStoreClientViewWPF
             this.service = service;
         }
 
-        private void FormCreateIndent_Load(object sender, EventArgs e)
+        private void FormCreateIndent_Load(object sender, RoutedEventArgs e)
         {
             if (id.HasValue)
             {
@@ -77,7 +77,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
             var form = Container.Resolve<FormIndentProduct>();
             if (form.ShowDialog() == true)
@@ -92,7 +92,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonUpd_Click(object sender, EventArgs e)
+        private void buttonUpd_Click(object sender, RoutedEventArgs e)
         {
             if (dataGridViewProduct.SelectedItem != null)
             {
@@ -106,7 +106,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonDel_Click(object sender, EventArgs e)
+        private void buttonDel_Click(object sender, RoutedEventArgs e)
         {
             if (dataGridViewProduct.SelectedItem != null)
             {
@@ -126,12 +126,12 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonRef_Click(object sender, EventArgs e)
+        private void buttonRef_Click(object sender, RoutedEventArgs e)
         {
             LoadData();
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxPrice.Text))
             {
@@ -172,7 +172,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
             Close();

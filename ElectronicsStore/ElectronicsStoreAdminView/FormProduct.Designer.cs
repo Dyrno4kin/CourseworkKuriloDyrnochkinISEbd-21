@@ -99,6 +99,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Name = "FormProduct";
             this.Text = "Товар";
+            this.Load += new System.EventHandler(this.FormProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

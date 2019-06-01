@@ -93,6 +93,7 @@
             this.Controls.Add(this.dataGridView);
             this.Name = "FormMain";
             this.Text = "Список товаров";
+            this.Load += new System.EventHandler(this.FormProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

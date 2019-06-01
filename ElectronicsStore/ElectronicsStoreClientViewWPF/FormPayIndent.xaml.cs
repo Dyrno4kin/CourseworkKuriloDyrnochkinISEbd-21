@@ -41,7 +41,7 @@ namespace ElectronicsStoreClientViewWPF
             this.service = service;
         }
 
-        private void FormIndentProduct_Load(object sender, EventArgs e)
+        private void FormIndentProduct_Load(object sender, RoutedEventArgs e)
         {
             if (id.HasValue)
             {
@@ -62,7 +62,7 @@ namespace ElectronicsStoreClientViewWPF
         }
         
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxPrice.Text))
             {
@@ -99,7 +99,7 @@ namespace ElectronicsStoreClientViewWPF
             }
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
             Close();

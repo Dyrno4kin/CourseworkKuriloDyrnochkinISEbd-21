@@ -33,7 +33,7 @@ namespace ElectronicsStoreClientViewWPF
             this.service = service;
         }
 
-        private void FormCanFoods_Load(object sender, EventArgs e)
+        private void FormCanFoods_Load(object sender, RoutedEventArgs e)
         {
             LoadData();
         }

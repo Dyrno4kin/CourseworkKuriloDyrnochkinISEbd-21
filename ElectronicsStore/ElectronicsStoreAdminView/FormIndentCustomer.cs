@@ -90,12 +90,8 @@ namespace ElectronicsStoreAdminView
 
         private void buttonRef_Click(object sender, EventArgs e)
         {
-
+            LoadData();
         }
-
-        private void buttonDel_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
