@@ -45,6 +45,7 @@ namespace ElectronicsStoreClientViewWPF
             {
                 Close();
                 var form = Container.Resolve<FormMain>();
+                form.login = textBoxLogin.Text;
                 form.ShowDialog();
             }
             else

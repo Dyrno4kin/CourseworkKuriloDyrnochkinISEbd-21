@@ -16,11 +16,13 @@ namespace ElectronicsStoreServiceDAL.Interfaces
         List<CustomerViewModel> GetList();
         [UsageMethod("Метод получения клиента по id")]
         CustomerViewModel GetElement(int id);
+        [UsageMethod("Метод получения клиента по логину")]
+        CustomerViewModel GetElement(string login);
         [UsageMethod("Метод добавления клиента")]
         void AddElement(CustomerBindingModel model);
         [UsageMethod("Метод изменения данных по клиенту")]
         void UpdElement(CustomerBindingModel model);
         [UsageMethod("Метод блокировки клиента")]
-        void Block(CustomerBindingModel model);
+        void Block(int id);
     }
 }

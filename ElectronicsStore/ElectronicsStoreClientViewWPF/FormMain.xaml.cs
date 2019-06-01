@@ -24,10 +24,13 @@ namespace ElectronicsStoreClientViewWPF
     {
         [Dependency]
         public IUnityContainer Container { get; set; }
+        public string login { get; set; }
 
         private readonly IMainService service;
-
         private readonly IReptService reportService;
+        private readonly ICustomerService customerService;
+
+        private CustomerViewModel customer;
 
         public FormMain(IMainService service, IReptService reportService)
         {
@@ -40,10 +43,10 @@ namespace ElectronicsStoreClientViewWPF
         {
             try
             {
-                List<IndentViewModel> list = service.GetList();
-                if (list != null)
+                customer = customerService.GetElement(login);
+                if (customer != null)
                 {
-                    dataGridViewMain.ItemsSource = list;
+                    dataGridViewMain.ItemsSource = customer.Indents;
                     dataGridViewMain.Columns[0].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[1].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[3].Visibility = Visibility.Hidden;
@@ -68,6 +71,7 @@ namespace ElectronicsStoreClientViewWPF
             try
             {
                 var form = Container.Resolve<FormCreateIndent>();
+                form.customerId = customer.Id;
                 form.ShowDialog();
                 LoadData();
             }
@@ -85,8 +89,20 @@ namespace ElectronicsStoreClientViewWPF
                 int id = ((IndentViewModel)dataGridViewMain.SelectedItem).Id;
                 try
                 {
-                    service.FinishOrder(new OrderBindingModel { Id = id });
-                    LoadData();
+                    var form = Container.Resolve<FormPayIndent>();
+                    if (form.ShowDialog() == true)
+                    {
+                        if (form.Model != null)
+                        {
+                            form.Model.IndentId = id;
+                            form.full = true;
+                            IndentViewModel view = service.GetElement(id);
+                            List<IndentPaymentViewModel> indentpayments = view.IndentPayments;
+                            indentpayments.Add(form.Model);
+                        }
+                        LoadData();
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -102,9 +118,20 @@ namespace ElectronicsStoreClientViewWPF
                 int id = ((IndentViewModel)dataGridViewMain.SelectedItem).Id;
                 try
                 {
-                    service.PayOrder(new Indent
-                        BindingModel { Id = id });
-                    LoadData();
+                    var form = Container.Resolve<FormPayIndent>();
+                    if (form.ShowDialog() == true)
+                    {
+                        if (form.Model != null)
+                        {
+                            form.Model.IndentId = id;
+                            form.full = false;
+                            IndentViewModel view = service.GetElement(id);
+                            List<IndentPaymentViewModel> indentpayments = view.IndentPayments;
+                            indentpayments.Add(form.Model);
+                        }
+                        LoadData();
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -135,10 +162,8 @@ namespace ElectronicsStoreClientViewWPF
 
             if (sfd.ShowDialog() == true)
             {
-
                 try
                 {
-
                     reportService.SaveProductPrice(new ReptBindingModel
                     {
                         FileName = sfd.FileName

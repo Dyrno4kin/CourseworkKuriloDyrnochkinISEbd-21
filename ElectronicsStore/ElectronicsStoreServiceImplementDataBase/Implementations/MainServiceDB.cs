@@ -127,5 +127,78 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                 objSmtpClient = null;
             }
         }
+
+        public IndentViewModel GetElement(int id)
+        {
+            Indent rec = context.Indents.FirstOrDefault(rec1 => rec1.Id == id);
+            if (rec != null)
+            {
+                return new IndentViewModel
+                {
+                    Id = rec.Id,
+                    CustomerId = rec.CustomerId,
+                    DateCreate = SqlFunctions.DateName("dd", rec.DateCreate),
+                    Status = rec.Status.ToString(),
+                    Sum = rec.Sum,
+                    CustomerFIO = rec.Customer.CustomerFIO,
+
+                    IndentProducts = context.IndentProducts
+                .Where(recPC => recPC.IndentId == rec.Id)
+                .Select(recPC => new IndentProductViewModel
+                {
+                    Id = recPC.Id,
+                    IndentId = recPC.IndentId,
+                    ProductId = recPC.ProductId,
+                    Count = recPC.Count
+                })
+                .ToList(),
+
+                    IndentPayments = context.IndentPayments
+                .Where(recPC => recPC.IndentId == rec.Id)
+                .Select(recPC => new IndentPaymentViewModel
+                {
+                    Id = recPC.Id,
+                    IndentId = recPC.IndentId,
+                    DatePayment = recPC.DatePayment,
+                    SumPayment = recPC.SumPayment,
+                })
+                .ToList()
+                };
+            }
+            throw new Exception("Элемент не найден");
+        }
+
+        public int GetBalance(int id)
+        {
+            int balance=0;
+            Indent rec = context.Indents.FirstOrDefault(rec1 => rec1.Id == id);
+            if (rec != null)
+            {
+                var indent = new IndentViewModel
+                {
+                    Sum = rec.Sum,
+
+                    IndentPayments = context.IndentPayments
+                .Where(recPC => recPC.IndentId == rec.Id)
+                .Select(recPC => new IndentPaymentViewModel
+                {
+                    Id = recPC.Id,
+                    IndentId = recPC.IndentId,
+                    DatePayment = recPC.DatePayment,
+                    SumPayment = recPC.SumPayment,
+                })
+                .ToList()
+                };
+                balance = Convert.ToInt32(indent.Sum);
+
+                foreach (var indentPayment in indent.IndentPayments)
+                {
+                    balance -= Convert.ToInt32(indentPayment.SumPayment);
+                }
+
+                return balance;
+            }
+            throw new Exception("Элемент не найден");
+        }
     }
 }

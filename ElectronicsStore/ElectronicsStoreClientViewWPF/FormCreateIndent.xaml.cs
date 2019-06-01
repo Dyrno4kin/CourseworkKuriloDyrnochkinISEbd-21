@@ -19,6 +19,8 @@ namespace ElectronicsStoreClientViewWPF
 
         public int Id { set { id = value; } }
 
+        public int customerId { get; set; }
+
         private readonly IMainService service;
 
         private int? id;
@@ -154,23 +156,12 @@ namespace ElectronicsStoreClientViewWPF
                         Count = indentproducts[i].Count
                     });
                 }
-                if (id.HasValue)
+                service.CreateIndent(new IndentBindingModel
                 {
-                    service.UpdElement(new IndentBindingModel
-                    {
-                        Id = id.Value,
-                        Sum = Convert.ToInt32(textBoxPrice.Text),
-                        IndentProducts = indentproductBM
-                    });
-                }
-                else
-                {
-                    service.AddElement(new IndentBindingModel
-                    {
-                        Sum = Convert.ToInt32(textBoxPrice.Text),
-                        IndentProducts = indentproductBM
-                    });
-                }
+                    Sum = Convert.ToInt32(textBoxPrice.Text),
+                    IndentProducts = indentproductBM,
+                    CustomerId = customerId
+                });
                 MessageBox.Show("Сохранение прошло успешно", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 DialogResult = true;
                 Close();

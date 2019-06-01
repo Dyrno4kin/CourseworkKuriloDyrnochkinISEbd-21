@@ -42,6 +42,20 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             }
             throw new Exception("Элемент не найден");
         }
+        public CustomerViewModel GetElement(string login)
+        {
+            Customer element = context.Customers.FirstOrDefault(rec => rec.Login == login);
+            if (element != null)
+            {
+                return new CustomerViewModel
+                {
+                    Id = element.Id,
+                    CustomerFIO = element.CustomerFIO,
+                    Email = element.Email
+                };
+            }
+            throw new Exception("Элемент не найден");
+        }
         public void AddElement(CustomerBindingModel model)
         {
             Customer element = context.Customers.FirstOrDefault(rec => rec.CustomerFIO == model.CustomerFIO);
@@ -72,9 +86,9 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             element.Email = model.Email;
             context.SaveChanges();
         }
-        public void Block(CustomerBindingModel model)
+        public void Block(int id)
         {
-            Customer element = context.Customers.FirstOrDefault(rec => rec.CustomerFIO == model.CustomerFIO && rec.Id != model.Id);
+            Customer element = context.Customers.FirstOrDefault(rec => rec.Id == id);
             if (element != null)
             {
                 element.CustomerStatus=true;

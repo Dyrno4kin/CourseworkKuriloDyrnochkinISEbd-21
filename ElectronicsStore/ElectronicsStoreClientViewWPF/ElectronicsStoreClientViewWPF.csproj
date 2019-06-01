@@ -104,6 +104,10 @@
       <DependentUpon>FormMain.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="FormPayIndent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FormProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,6 +122,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormPayIndent.xaml.cs">
+      <DependentUpon>FormPayIndent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormProducts.xaml.cs">
       <DependentUpon>FormProducts.xaml</DependentUpon>
     </Compile>
