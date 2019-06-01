@@ -39,9 +39,10 @@ namespace ElectronicsStoreAdminView
             if ((textBoxPassword.Text == ConfigurationManager.AppSettings["AdminPassword"])
                 &&(textBoxLogin.Text == ConfigurationManager.AppSettings["AdminLogin"]))
             {
-                Close();
-                var form = Container.Resolve<FormMain>();
-                form.ShowDialog();
+
+                this.Visible = false;
+                var form2 = Container.Resolve<FormMain>();
+                form2.ShowDialog();
             }
             else
             {

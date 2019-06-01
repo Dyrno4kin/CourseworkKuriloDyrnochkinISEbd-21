@@ -45,14 +45,25 @@ namespace ElectronicsStoreClientViewWPF
             try
             {
                 customer = customerService.GetElement(login);
+                if (customer.CustomerStatus == true)
+                {
+                    buttonCreateOrder.Visibility = Visibility.Collapsed;
+                    throw new Exception("Пользователь заблокирован");
+                }else
+                {
+                    buttonCreateOrder.Visibility = Visibility.Visible;
+                }
                 if (customer != null)
                 {
                     dataGridViewMain.ItemsSource = customer.Indents;
+                    if (dataGridViewMain.Columns.Count > 0)
+                    {
                     dataGridViewMain.Columns[0].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[1].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[3].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[5].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[1].Width = DataGridLength.Auto;
+                    }
                 }
             }
             catch (Exception ex)
@@ -205,6 +216,11 @@ namespace ElectronicsStoreClientViewWPF
         {
             //var form = Container.Resolve<FormCustomerIndents>();
            // form.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadData();
         }
     }
 }

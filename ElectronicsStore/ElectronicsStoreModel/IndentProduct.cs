@@ -1,11 +1,13 @@
 ﻿
 
+using System.ComponentModel.DataAnnotations;
+
 namespace ElectronicsStoreModel
 {
     public class IndentProduct
     {
         public int Id { get; set; }
-
+        [Required]
         public int IndentId { get; set; }
 
         public int ProductId { get; set; }

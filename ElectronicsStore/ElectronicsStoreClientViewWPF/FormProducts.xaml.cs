@@ -43,12 +43,11 @@ namespace ElectronicsStoreClientViewWPF
             try
             {
                 List<ProductViewModel> list = service.GetList();
-                if (list != null)
+                if ((list != null) &&(list.Count > 0))
                 {
                     dataGridViewCanFoods.ItemsSource = list;
                     dataGridViewCanFoods.Columns[0].Visibility = Visibility.Hidden;
                     dataGridViewCanFoods.Columns[1].Width = DataGridLength.Auto;
-                    dataGridViewCanFoods.Columns[3].Visibility = Visibility.Hidden;
                 }
             }
             catch (Exception ex)

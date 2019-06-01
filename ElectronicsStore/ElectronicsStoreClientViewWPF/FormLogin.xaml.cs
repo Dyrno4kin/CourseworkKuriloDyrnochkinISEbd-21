@@ -30,7 +30,7 @@ namespace ElectronicsStoreClientViewWPF
                 return;
             }
 
-            SqlConnection conn = new SqlConnection(@"Data Source=adres\SQLEXPRESS;Initial Catalog=ElectronicStoreDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-C00JU0F\SQLEXPRESS;Initial Catalog=ElectronicsStoreDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             conn.Open();
             SqlCommand cmd = new SqlCommand("select * from Customers where Login = '" + textBoxLogin.Text + "' and Password = '" + textBoxPass.Text + "'", conn);
             SqlDataReader dt;

@@ -22,16 +22,18 @@ namespace ElectronicsStoreClientViewWPF
         public int customerId { get; set; }
 
         private readonly IMainService service;
+        private readonly IProductService serviceProd;
 
         private int? id;
 
         private List<IndentProductViewModel> indentproducts;
 
-        public FormCreateIndent(IMainService service)
+        public FormCreateIndent(IMainService service, IProductService serviceProd)
         {
             InitializeComponent();
             Loaded += FormCreateIndent_Load;
             this.service = service;
+            this.serviceProd = serviceProd;
         }
 
         private void FormCreateIndent_Load(object sender, RoutedEventArgs e)
@@ -64,11 +66,16 @@ namespace ElectronicsStoreClientViewWPF
                 if (indentproducts != null)
                 {
                     dataGridViewProduct.ItemsSource = null;
+                    textBoxPrice.Text = "0";
                     dataGridViewProduct.ItemsSource = indentproducts;
-                    dataGridViewProduct.Columns[0].Visibility = Visibility.Hidden;
-                    dataGridViewProduct.Columns[1].Visibility = Visibility.Hidden;
-                    dataGridViewProduct.Columns[2].Visibility = Visibility.Hidden;
                     dataGridViewProduct.Columns[3].Width = DataGridLength.Auto;
+                    if (indentproducts != null)
+                    {
+                        foreach (IndentProductViewModel prod in indentproducts)
+                        {
+                            textBoxPrice.Text = (Convert.ToInt32(textBoxPrice.Text) + prod.Count * Convert.ToInt32(serviceProd.GetElement(prod.ProductId).Price)).ToString();
+                        }
+                    }
                 }
             }
             catch (Exception ex)

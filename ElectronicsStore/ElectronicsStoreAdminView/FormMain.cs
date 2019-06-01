@@ -101,5 +101,12 @@ namespace ElectronicsStoreAdminView
         {
             LoadData();
         }
+
+        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormCustomers>();
+            form.ShowDialog();
+        }
+        
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ElectronicsStoreModel
@@ -7,7 +8,7 @@ namespace ElectronicsStoreModel
     public class Indent
     {
         public int Id { get; set; }
-
+        [Required]
         public int CustomerId { get; set; }
 
         public decimal Sum { get; set; }

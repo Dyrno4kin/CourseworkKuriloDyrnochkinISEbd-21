@@ -60,6 +60,7 @@
             this.buttonSave.TabIndex = 9;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonCancel
             // 
@@ -69,6 +70,7 @@
             this.buttonCancel.TabIndex = 8;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // textBoxPrice
             // 

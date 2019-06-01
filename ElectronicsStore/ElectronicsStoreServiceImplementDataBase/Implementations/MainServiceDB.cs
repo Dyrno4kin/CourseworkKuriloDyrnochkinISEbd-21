@@ -66,11 +66,10 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                 CustomerId = model.CustomerId,
                 DateCreate = DateTime.Now,
                 Sum = model.Sum,
-                Status = IndentStatus.Принят
+                Customer = context.Customers.FirstOrDefault(rec => rec.Id == model.CustomerId)
             };
             context.Indents.Add(indent);
             context.SaveChanges();
-
             var products = model.IndentProducts
                     .GroupBy(rec => rec.Id)
                    .Select(rec => new
@@ -81,17 +80,19 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
 
             foreach (var product in products)
             {
-                context.IndentProducts.Add(new IndentProduct
+                var IndentProd = new IndentProduct
                 {
-                    Id = indent.Id,
-                    IndentId = product.IndentId,
+                    ProductId = product.IndentId,
+                    
+                    IndentId = indent.Id,
                     Count = product.Count
-                });
+                };
+                context.IndentProducts.Add(IndentProd);
                 context.SaveChanges();
             }
-
+            context.SaveChanges();
             var customer = context.Customers.FirstOrDefault(x => x.Id == model.CustomerId);
-            SendEmail(customer.Email, "Оповещение по заказам", $"Заказ №{indent.Id} от {indent.DateCreate.ToShortDateString()} создан успешно");
+           // SendEmail(customer.Email, "Оповещение по заказам", $"Заказ №{indent.Id} от {indent.DateCreate.ToShortDateString()} создан успешно");
         }
 
         private void SendEmail(string mailAddress, string subject, string text)

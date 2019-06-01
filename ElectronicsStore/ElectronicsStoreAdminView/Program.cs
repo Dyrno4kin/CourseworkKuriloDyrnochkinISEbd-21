@@ -1,5 +1,9 @@
-﻿using System;
+﻿using ElectronicsStoreServiceDAL.Interfaces;
+using ElectronicsStoreServiceImplementDataBase;
+using ElectronicsStoreServiceImplementDataBase.Implementations;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,23 +24,26 @@ namespace ElectronicsStoreAdminView
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(container.Resolve<FormMain>());
+            Application.Run(container.Resolve<FormAuthorization>());
         }
 
         public static IUnityContainer BuildUnityContainer()
         {
             var currentContainer = new UnityContainer();
 
-            /*
-            currentContainer.RegisterType<ICustomerService, CustomerServiceList>(new
+            currentContainer.RegisterType<DbContext, ElectronicsStoreDbContext>(new
            HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IIngredientService, IngredientServiceList>(new
+            currentContainer.RegisterType<ICustomerService, CustomerServiceDB>(new
            HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IPizzaService, PizzaServiceList>(new
+            currentContainer.RegisterType<IIndentPaymentService, IndentPaymentDB>(new
            HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IMainService, MainServiceList>(new
+            currentContainer.RegisterType<IProductService, ProductServiceDB>(new
            HierarchicalLifetimeManager());
-           */
+            currentContainer.RegisterType<IMainService, MainServiceDB>(new
+           HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IReptService, ReptServiceDB>(new
+           HierarchicalLifetimeManager());
+
             return currentContainer;
         }
     }

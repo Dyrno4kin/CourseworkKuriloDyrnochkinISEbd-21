@@ -63,11 +63,18 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             {
                 throw new Exception("Уже есть клиент с таким ФИО");
             }
-            context.Customers.Add(new Customer
+            element = new Customer
             {
+                //Id = model.Id,
+                DateRegistration = DateTime.Now,
+                Password = model.Password,
+                Login = model.Login,
+                CustomerStatus = false,
+                Bonus=0,
                 CustomerFIO = model.CustomerFIO,
                 Email = model.Email
-            });
+            };
+            context.Customers.Add(element);
             context.SaveChanges();
         }
         public void UpdElement(CustomerBindingModel model)
@@ -91,7 +98,7 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             Customer element = context.Customers.FirstOrDefault(rec => rec.Id == id);
             if (element != null)
             {
-                element.CustomerStatus=true;
+                element.CustomerStatus= !element.CustomerStatus;
                 context.SaveChanges();
             }
             else

@@ -37,45 +37,51 @@
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(544, 198);
+            this.buttonRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRef.Location = new System.Drawing.Point(1049, 212);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(136, 45);
             this.buttonRef.TabIndex = 20;
             this.buttonRef.Text = "Обновить";
             this.buttonRef.UseVisualStyleBackColor = true;
+            this.buttonRef.Click += new System.EventHandler(this.buttonRef_Click);
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(544, 146);
+            this.buttonDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonDel.Location = new System.Drawing.Point(1049, 160);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(136, 45);
             this.buttonDel.TabIndex = 19;
             this.buttonDel.Text = "Заблокировать";
             this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // buttonUpd
             // 
-            this.buttonUpd.Location = new System.Drawing.Point(544, 79);
+            this.buttonUpd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonUpd.Location = new System.Drawing.Point(1049, 93);
             this.buttonUpd.Name = "buttonUpd";
             this.buttonUpd.Size = new System.Drawing.Size(136, 60);
             this.buttonUpd.TabIndex = 18;
             this.buttonUpd.Text = "Заказы клиента";
             this.buttonUpd.UseVisualStyleBackColor = true;
+            this.buttonUpd.Click += new System.EventHandler(this.buttonUpd_Click);
             // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(69, 19);
+            this.dataGridView.Location = new System.Drawing.Point(12, 12);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(437, 371);
+            this.dataGridView.Size = new System.Drawing.Size(889, 371);
             this.dataGridView.TabIndex = 17;
             // 
             // FormCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 409);
+            this.ClientSize = new System.Drawing.Size(1230, 409);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonUpd);
