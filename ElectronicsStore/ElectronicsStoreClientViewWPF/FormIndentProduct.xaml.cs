@@ -90,7 +90,8 @@ namespace ElectronicsStoreClientViewWPF
                     {
                         ProductId = Convert.ToInt32(comboBoxProduct.SelectedValue),
                         ProductName = comboBoxProduct.Text,
-                        Count = Convert.ToInt32(textBoxCount.Text)
+                        Count = Convert.ToInt32(textBoxCount.Text),
+                        Sum = service.GetElement(Convert.ToInt32(comboBoxProduct.SelectedValue)).Price * Convert.ToInt32(textBoxCount.Text)
                     };
                 }
                 else

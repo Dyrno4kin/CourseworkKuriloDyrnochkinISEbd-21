@@ -59,40 +59,83 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             return result;
         }
 
+        public List<IndentViewModel> GetListCustomer(int CustomerId)
+        {
+            List<IndentViewModel> result = context.Indents.Where(rec => rec.CustomerId == CustomerId).Select(rec => new IndentViewModel
+            {
+                Id = rec.Id,
+                DateCreate = SqlFunctions.DateName("dd", rec.DateCreate),
+                Status = rec.Status,
+                Sum = rec.Sum,
+
+                IndentProducts = context.IndentProducts
+                .Where(recPC => recPC.IndentId == rec.Id)
+                .Select(recPC => new IndentProductViewModel
+                {
+                    Id = recPC.Id,
+                    IndentId = recPC.IndentId,
+                    ProductId = recPC.ProductId,
+                    Count = recPC.Count
+                })
+                .ToList(),
+
+                IndentPayments = context.IndentPayments
+                .Where(recPC => recPC.IndentId == rec.Id)
+                .Select(recPC => new IndentPaymentViewModel
+                {
+                    Id = recPC.Id,
+                    IndentId = recPC.IndentId,
+                    DatePayment = recPC.DatePayment,
+                    SumPayment = recPC.SumPayment,
+                })
+                .ToList()
+            })
+            .ToList();
+            return result;
+        }
+
         public void CreateIndent(IndentBindingModel model)
         {
-            var indent = new Indent
+            using (var transaction = context.Database.BeginTransaction())
             {
-                CustomerId = model.CustomerId,
-                DateCreate = DateTime.Now,
-                Sum = model.Sum,
-                Customer = context.Customers.FirstOrDefault(rec => rec.Id == model.CustomerId)
-            };
-            context.Indents.Add(indent);
-            context.SaveChanges();
-            var products = model.IndentProducts
-                    .GroupBy(rec => rec.Id)
-                   .Select(rec => new
-                   {
-                       IndentId = rec.Key,
-                       Count = rec.Sum(r => r.Count)
-                   });
-
-            foreach (var product in products)
-            {
-                var IndentProd = new IndentProduct
+                try
                 {
-                    ProductId = product.IndentId,
-                    
-                    IndentId = indent.Id,
-                    Count = product.Count
+                    Indent indent = new Indent
+                    {
+                        CustomerId = model.CustomerId,
+                        DateCreate = DateTime.Now,
+                        Status = IndentStatus.Принят,
+                        Sum = model.Sum
                 };
-                context.IndentProducts.Add(IndentProd);
-                context.SaveChanges();
+                    context.Indents.Add(indent);
+                    context.SaveChanges();
+                    var products = model.IndentProducts
+                            .GroupBy(rec => rec.ProductId)
+                           .Select(rec => new
+                           {
+                               ProductId = rec.Key,
+                               Count = rec.Sum(r => r.Count)
+                               
+                           });
+                    foreach (var product in products)
+                    {
+                        var IndentProd = new IndentProduct
+                        {
+                            IndentId = indent.Id,
+                            ProductId = product.ProductId,
+                            Count = product.Count
+                        };
+                        context.IndentProducts.Add(IndentProd);
+                        context.SaveChanges();
+                    }
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
             }
-            context.SaveChanges();
-            var customer = context.Customers.FirstOrDefault(x => x.Id == model.CustomerId);
-           // SendEmail(customer.Email, "Оповещение по заказам", $"Заказ №{indent.Id} от {indent.DateCreate.ToShortDateString()} создан успешно");
         }
 
         private void SendEmail(string mailAddress, string subject, string text)
@@ -171,7 +214,7 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
 
         public int GetBalance(int id)
         {
-            int balance=0;
+            int balance = 0;
             Indent rec = context.Indents.FirstOrDefault(rec1 => rec1.Id == id);
             if (rec != null)
             {

@@ -14,5 +14,7 @@ namespace ElectronicsStoreServiceDAL.ViewModel
         public string ProductName { get; set; }
         [DataMember]
         public int Count { get; set; }
+        [DataMember]
+        public decimal Sum { get; set; }
     }
 }

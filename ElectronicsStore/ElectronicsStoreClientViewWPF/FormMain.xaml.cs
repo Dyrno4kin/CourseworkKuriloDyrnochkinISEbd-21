@@ -55,7 +55,7 @@ namespace ElectronicsStoreClientViewWPF
                 }
                 if (customer != null)
                 {
-                    dataGridViewMain.ItemsSource = customer.Indents;
+                    dataGridViewMain.ItemsSource = service.GetListCustomer(customer.Id);
                     if (dataGridViewMain.Columns.Count > 0)
                     {
                     dataGridViewMain.Columns[0].Visibility = Visibility.Hidden;

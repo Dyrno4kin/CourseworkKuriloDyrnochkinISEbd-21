@@ -21,8 +21,6 @@ namespace ElectronicsStoreModel
 
         [ForeignKey("IndentId")]
         public virtual List<IndentProduct> IndentProducts { get; set; }
-
-        [ForeignKey("IndentId")]
         public virtual List<IndentPayment> IndentPayments { get; set; }
     }
 }

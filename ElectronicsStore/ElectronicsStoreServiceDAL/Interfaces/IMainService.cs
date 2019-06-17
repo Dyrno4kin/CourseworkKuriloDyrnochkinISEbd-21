@@ -14,6 +14,8 @@ namespace ElectronicsStoreServiceDAL.Interfaces
     {
         [UsageMethod("Метод получения списка заказов")]
         List<IndentViewModel> GetList();
+        [UsageMethod("Метод получения списка заказов клиента")]
+        List<IndentViewModel> GetListCustomer(int CustomerId);
         [UsageMethod("Метод получения продукта по id")]
         IndentViewModel GetElement(int id);
         [UsageMethod("Метод добавления заказа")]
