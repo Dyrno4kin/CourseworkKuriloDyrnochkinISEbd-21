@@ -33,7 +33,6 @@ namespace ElectronicsStoreClientViewWPF
         IndentViewModel indent;
 
         public IndentPaymentViewModel Model { set { model = value; } get { return model; } }
-        private IndentPaymentViewModel model;
 
         public FormPayIndent(IMainService service)
         {

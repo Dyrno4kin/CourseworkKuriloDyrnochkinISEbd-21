@@ -36,7 +36,7 @@
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(496, 190);
+            this.buttonRef.Location = new System.Drawing.Point(142, 389);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(115, 46);
             this.buttonRef.TabIndex = 16;
@@ -46,7 +46,7 @@
             // 
             // buttonUpd
             // 
-            this.buttonUpd.Location = new System.Drawing.Point(496, 86);
+            this.buttonUpd.Location = new System.Drawing.Point(21, 389);
             this.buttonUpd.Name = "buttonUpd";
             this.buttonUpd.Size = new System.Drawing.Size(115, 46);
             this.buttonUpd.TabIndex = 14;
@@ -60,14 +60,14 @@
             this.dataGridView.Location = new System.Drawing.Point(21, 12);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(437, 371);
+            this.dataGridView.Size = new System.Drawing.Size(1117, 371);
             this.dataGridView.TabIndex = 13;
             // 
             // FormIndentCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 424);
+            this.ClientSize = new System.Drawing.Size(1289, 458);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonUpd);
             this.Controls.Add(this.dataGridView);

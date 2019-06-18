@@ -137,41 +137,7 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                 }
             }
         }
-
-        private void SendEmail(string mailAddress, string subject, string text)
-        {
-            MailMessage objMailMessage = new MailMessage();
-            SmtpClient objSmtpClient = null;
-            try
-            {
-                string login = ConfigurationManager.AppSettings["MailLogin"];
-                objMailMessage.From = new
-               MailAddress(login);
-                objMailMessage.To.Add(new MailAddress(mailAddress));
-                objMailMessage.Subject = subject;
-                objMailMessage.Body = text;
-                objMailMessage.SubjectEncoding = System.Text.Encoding.UTF8;
-                objMailMessage.BodyEncoding = System.Text.Encoding.UTF8;
-                objSmtpClient = new SmtpClient("smtp.gmail.com", 587);
-                objSmtpClient.UseDefaultCredentials = false;
-                objSmtpClient.EnableSsl = true;
-                objSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                objSmtpClient.Credentials = new
-               NetworkCredential(ConfigurationManager.AppSettings["MailLogin"],
-               ConfigurationManager.AppSettings["MailPassword"]);
-                objSmtpClient.Send(objMailMessage);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                objMailMessage = null;
-                objSmtpClient = null;
-            }
-        }
-
+        
         public IndentViewModel GetElement(int id)
         {
             Indent rec = context.Indents.FirstOrDefault(rec1 => rec1.Id == id);
@@ -181,32 +147,32 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                 {
                     Id = rec.Id,
                     CustomerId = rec.CustomerId,
-                    DateCreate = SqlFunctions.DateName("dd", rec.DateCreate),
+                    DateCreate = rec.DateCreate.ToShortDateString(),
                     Status = rec.Status,
                     Sum = rec.Sum,
-                    CustomerFIO = rec.Customer.CustomerFIO,
+                    CustomerFIO = context.Customers.FirstOrDefault(rec1 => rec1.Id == rec.CustomerId).CustomerFIO,
 
                     IndentProducts = context.IndentProducts
-                .Where(recPC => recPC.IndentId == rec.Id)
-                .Select(recPC => new IndentProductViewModel
-                {
-                    Id = recPC.Id,
-                    IndentId = recPC.IndentId,
-                    ProductId = recPC.ProductId,
-                    Count = recPC.Count
-                })
-                .ToList(),
+                    .Where(recPC => recPC.IndentId == rec.Id)
+                    .Select(recPC => new IndentProductViewModel
+                    {
+                        Id = recPC.Id,
+                        IndentId = recPC.IndentId,
+                        ProductId = recPC.ProductId,
+                        Count = recPC.Count
+                    })
+                    .ToList(),
 
                     IndentPayments = context.IndentPayments
-                .Where(recPC => recPC.IndentId == rec.Id)
-                .Select(recPC => new IndentPaymentViewModel
-                {
-                    Id = recPC.Id,
-                    IndentId = recPC.IndentId,
-                    DatePayment = recPC.DatePayment,
-                    SumPayment = recPC.SumPayment
-                })
-                .ToList()
+                    .Where(recPC => recPC.IndentId == rec.Id)
+                    .Select(recPC => new IndentPaymentViewModel
+                    {
+                        Id = recPC.Id,
+                        IndentId = recPC.IndentId,
+                        DatePayment = recPC.DatePayment,
+                        SumPayment = recPC.SumPayment
+                    })
+                    .ToList()
                 };
             }
             throw new Exception("Элемент не найден");

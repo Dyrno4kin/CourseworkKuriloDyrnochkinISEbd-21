@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectronicsStoreClientViewWPF"
         mc:Ignorable="d"
-        Title="Создание заказа" Height="397.469" Width="520.755">
+        Title="Создание заказа" Height="397.469" Width="520.755" Loaded="FormCreateIndent_Load">
     <Grid Margin="0,0,2.453,-0.774">
         <Label x:Name="labelPrice" Content="Цена:" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textBoxPrice" HorizontalAlignment="Left" Height="20" Margin="77,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113" IsEnabled="False"/>

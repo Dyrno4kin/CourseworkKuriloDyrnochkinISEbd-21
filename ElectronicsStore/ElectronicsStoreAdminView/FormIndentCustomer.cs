@@ -61,11 +61,7 @@ namespace ElectronicsStoreAdminView
                 {
                     dataGridView.DataSource = null;
                     dataGridView.DataSource = indent;
-                    dataGridView.Columns[0].Visible = false;
-                    dataGridView.Columns[1].Visible = false;
-                    dataGridView.Columns[3].Visible = false;
-                    dataGridView.Columns[2].AutoSizeMode =
-                    DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.Columns[2].Visible = false;
                 }
             }
             catch (Exception ex)

@@ -25,6 +25,7 @@ namespace ElectronicsStoreClientViewWPF
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
             var form = Container.Resolve<FormLogin>();
+            this.Visibility = Visibility.Collapsed;
             form.ShowDialog();
             Close();
         }

@@ -2,15 +2,16 @@
 
 namespace ElectronicsStoreServiceDAL.ViewModel
 {
+    /*
     [DataContract]
     public class CustomerIndentViewModel
     {
         [DataMember]
+        public int CustomerId { get; set; }
+        [DataMember]
         public string CustomerName { get; set; }
         [DataMember]
         public string DateCreate { get; set; }
-        [DataMember]
-        public string ProductName { get; set; }
         [DataMember]
         public int Count { get; set; }
         [DataMember]
@@ -18,4 +19,5 @@ namespace ElectronicsStoreServiceDAL.ViewModel
         [DataMember]
         public string Status { get; set; }
     }
+    */
 }

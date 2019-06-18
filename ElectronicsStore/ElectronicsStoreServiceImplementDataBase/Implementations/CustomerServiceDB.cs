@@ -47,13 +47,15 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                     Login = element.Login,
                     CustomerStatus = element.CustomerStatus,
                     
-                    Indents = element.Indents
+                    Indents = context.Indents
                 .Where(recPC => recPC.CustomerId == element.Id)
                 .Select(recPC => new IndentViewModel
                 {
                     Id = recPC.Id,
+                    DateCreate = recPC.DateCreate.ToString(),
                     CustomerId = recPC.CustomerId,
-                    Status = recPC.Status
+                    Status = recPC.Status,
+                    Sum = recPC.Sum
                 })
                 .ToList(),
 

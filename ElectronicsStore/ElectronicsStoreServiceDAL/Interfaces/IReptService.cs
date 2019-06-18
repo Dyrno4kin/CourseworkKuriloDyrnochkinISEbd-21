@@ -17,8 +17,10 @@ namespace ElectronicsStoreServiceDAL.Interfaces
         [UsageMethod("Метод добавления отчёта word")]
         void SaveProductPriceW(ReptBindingModel model);
         [UsageMethod("Метод получения списка отчётов")]
-        List<CustomerIndentViewModel> GetCustomerIndents(ReptBindingModel model);
+        List<IndentViewModel> GetCustomerIndents(ReptBindingModel model);
         [UsageMethod("Метод получения отчёта по id")]
         void SaveCustomerIndents(ReptBindingModel model);
+        [UsageMethod("Метод отправления писем")]
+        void SendEmail(ReptBindingModel model);
     }
 }

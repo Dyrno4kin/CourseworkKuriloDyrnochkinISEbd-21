@@ -13,15 +13,20 @@ using System.Threading.Tasks;
 using ElectronicsStoreServiceDAL.BindingModel;
 using ElectronicsStoreServiceDAL.ViewModel;
 using System.Data.Entity.SqlServer;
+using System.Configuration;
+using System.Net.Mail;
+using System.Net;
 
 namespace ElectronicsStoreServiceImplementDataBase.Implementations
 {
     public class ReptServiceDB : IReptService
     {
         private ElectronicsStoreDbContext context;
-        public ReptServiceDB(ElectronicsStoreDbContext context)
+        private readonly IMainService service;
+        public ReptServiceDB(ElectronicsStoreDbContext context, IMainService service)
         {
             this.context = context;
+            this.service = service;
         }
 
         public void SaveProductPriceXls(ReptBindingModel model)
@@ -229,16 +234,18 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             }
         }
 
-        public List<CustomerIndentViewModel> GetCustomerIndents(ReptBindingModel model)
+        public List<IndentViewModel> GetCustomerIndents(ReptBindingModel model)
         {
             return context.Indents
             .Include(rec => rec.Customer)
            .Include(rec => rec.IndentProducts)
            .Where(rec => rec.DateCreate >= model.DateFrom &&
            rec.DateCreate <= model.DateTo)
-            .Select(rec => new CustomerIndentViewModel
+            .Select(rec => new IndentViewModel
             {
-                CustomerName = rec.Customer.CustomerFIO,
+                Id = rec.Id,
+                CustomerFIO = rec.Customer.CustomerFIO,
+                CustomerId = rec.Customer.Id,
                 DateCreate = SqlFunctions.DateName("dd", rec.DateCreate)
            + " " +
             SqlFunctions.DateName("mm", rec.DateCreate) +
@@ -246,10 +253,60 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             SqlFunctions.DateName("yyyy",
            rec.DateCreate),
                 Sum = rec.Sum,
-                Status = rec.Status.ToString()
+                Status = rec.Status
             })
            .ToList();
         }
+
+        public void SendEmail(ReptBindingModel model)
+        {
+            string mailAddress = null;
+            string subject = "Оповещение по заказам";
+            string text = null;
+            System.Net.Mail.MailMessage objMailMessage = new System.Net.Mail.MailMessage();
+            SmtpClient objSmtpClient = null;
+
+            var list = GetCustomerIndents(model);
+            try
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].Status == ElectronicsStoreModel.IndentStatus.Оплачен)
+                    {
+                        continue;
+                    }
+                    mailAddress = context.Customers.FirstOrDefault(rec1 => rec1.Id == list[i].CustomerId).Email;
+                    text = $"{list[i].CustomerFIO}, Ваш заказ №{list[i].Id} от {list[i].DateCreate} не оплачен";
+
+                    string login = ConfigurationManager.AppSettings["MailLogin"];
+                    objMailMessage.From = new
+                   MailAddress(login);
+                    objMailMessage.To.Add(new MailAddress(mailAddress));
+                    objMailMessage.Subject = subject;
+                    objMailMessage.Body = text;
+                    objMailMessage.SubjectEncoding = System.Text.Encoding.UTF8;
+                    objMailMessage.BodyEncoding = System.Text.Encoding.UTF8;
+                    objSmtpClient = new SmtpClient("smtp.gmail.com", 587);
+                    objSmtpClient.UseDefaultCredentials = false;
+                    objSmtpClient.EnableSsl = true;
+                    objSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    objSmtpClient.Credentials = new
+                   NetworkCredential(ConfigurationManager.AppSettings["MailLogin"],
+                   ConfigurationManager.AppSettings["MailPassword"]);
+                    objSmtpClient.Send(objMailMessage);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objMailMessage = null;
+                objSmtpClient = null;
+            }
+        }
+
         public void SaveCustomerIndents(ReptBindingModel model)
         {
             //из ресрусов получаем шрифт для кирилицы
@@ -306,14 +363,6 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             {
                 HorizontalAlignment = Element.ALIGN_CENTER
             });
-            table.AddCell(new PdfPCell(new Phrase("Изделие", fontForCellBold))
-            {
-                HorizontalAlignment = Element.ALIGN_CENTER
-            });
-            table.AddCell(new PdfPCell(new Phrase("Количество", fontForCellBold))
-            {
-                HorizontalAlignment = Element.ALIGN_CENTER
-            });
             table.AddCell(new PdfPCell(new Phrase("Сумма", fontForCellBold))
             {
                 HorizontalAlignment = Element.ALIGN_CENTER
@@ -322,31 +371,49 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             {
                 HorizontalAlignment = Element.ALIGN_CENTER
             });
+            table.AddCell(new PdfPCell(new Phrase("Дата последней оплаты", fontForCellBold))
+            {
+                HorizontalAlignment = Element.ALIGN_CENTER
+            });
+            table.AddCell(new PdfPCell(new Phrase("Остаток", fontForCellBold))
+            {
+                HorizontalAlignment = Element.ALIGN_CENTER
+            });
             //заполняем таблицу
             var list = GetCustomerIndents(model);
             var fontForCells = new iTextSharp.text.Font(baseFont, 10);
             for (int i = 0; i < list.Count; i++)
             {
-                cell = new PdfPCell(new Phrase(list[i].CustomerName, fontForCells));
+                cell = new PdfPCell(new Phrase(list[i].CustomerFIO, fontForCells));
                 table.AddCell(cell);
                 cell = new PdfPCell(new Phrase(list[i].DateCreate, fontForCells));
-                table.AddCell(cell);
-                cell = new PdfPCell(new Phrase(list[i].ProductName, fontForCells));
-                table.AddCell(cell);
-                cell = new PdfPCell(new Phrase(list[i].Count.ToString(), fontForCells));
-                cell.HorizontalAlignment = Element.ALIGN_RIGHT;
                 table.AddCell(cell);
                 cell = new PdfPCell(new Phrase(list[i].Sum.ToString(), fontForCells));
                 cell.HorizontalAlignment = Element.ALIGN_RIGHT;
                 table.AddCell(cell);
-                cell = new PdfPCell(new Phrase(list[i].Status, fontForCells));
+                cell = new PdfPCell(new Phrase(list[i].Status.ToString(), fontForCells));
+                table.AddCell(cell);
+
+                var payment = context.IndentPayments.ToList().LastOrDefault(rec1 => rec1.IndentId == list[i].Id);
+                if (payment != null)
+                {
+                    cell = new PdfPCell(new Phrase(payment.DatePayment.ToShortDateString(), fontForCells));
+                    table.AddCell(cell);
+                }
+                else
+                {
+                    cell = new PdfPCell(new Phrase( "Оплат нет", fontForCells));
+                    table.AddCell(cell);
+                }
+                cell = new PdfPCell(new Phrase(service.GetBalance(list[i].Id).ToString(), fontForCells));
+                cell.HorizontalAlignment = Element.ALIGN_RIGHT;
                 table.AddCell(cell);
             }
             //вставляем итого
             cell = new PdfPCell(new Phrase("Итого:", fontForCellBold))
             {
                 HorizontalAlignment = Element.ALIGN_RIGHT,
-                Colspan = 4,
+                Colspan = 2,
                 Border = 0
             };
             table.AddCell(cell);
@@ -359,12 +426,13 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             table.AddCell(cell);
             cell = new PdfPCell(new Phrase("", fontForCellBold))
             {
+                Colspan = 3,
                 Border = 0
             };
             table.AddCell(cell);
             //вставляем таблицу
             doc.Add(table);
             doc.Close();
-        }
+        }       
     }
 }

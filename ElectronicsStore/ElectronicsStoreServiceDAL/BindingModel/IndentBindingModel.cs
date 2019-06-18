@@ -15,8 +15,6 @@ namespace ElectronicsStoreServiceDAL.BindingModel
         [DataMember]
         public int ProductId { get; set; }
         [DataMember]
-        public int Count { get; set; }
-        [DataMember]
         public decimal Sum { get; set; }
         [DataMember]
         public List<IndentProductBindingModel> IndentProducts { get; set; }

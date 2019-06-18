@@ -1,4 +1,5 @@
-﻿using ElectronicsStoreServiceDAL.Interfaces;
+﻿using ElectronicsStoreServiceDAL.BindingModel;
+using ElectronicsStoreServiceDAL.Interfaces;
 using ElectronicsStoreServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,13 @@ namespace ElectronicsStoreAdminView
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly IProductService service;
+        private IReptService reptService;
 
-        public FormMain(IProductService service)
+        public FormMain(IProductService service, IReptService reptService)
         {
             InitializeComponent();
             this.service = service;
+            this.reptService = reptService;
         }
 
 
@@ -108,5 +111,11 @@ namespace ElectronicsStoreAdminView
             form.ShowDialog();
         }
         
+
+        private void заказыКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReport>();
+            form.ShowDialog();
+        }
     }
 }

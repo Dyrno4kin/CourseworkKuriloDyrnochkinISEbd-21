@@ -29,11 +29,10 @@ namespace ElectronicsStoreClientViewWPF
         public FormProducts(IProductService service)
         {
             InitializeComponent();
-            Loaded += FormCanFoods_Load;
             this.service = service;
         }
 
-        private void FormCanFoods_Load(object sender, RoutedEventArgs e)
+        private void FormProducts_Load(object sender, RoutedEventArgs e)
         {
             LoadData();
         }

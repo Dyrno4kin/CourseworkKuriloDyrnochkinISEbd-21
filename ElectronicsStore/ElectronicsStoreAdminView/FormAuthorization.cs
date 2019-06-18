@@ -43,6 +43,7 @@ namespace ElectronicsStoreAdminView
                 this.Visible = false;
                 var form2 = Container.Resolve<FormMain>();
                 form2.ShowDialog();
+                Close();
             }
             else
             {

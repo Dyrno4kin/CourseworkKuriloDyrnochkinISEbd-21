@@ -29,6 +29,7 @@ namespace ElectronicsStoreClientViewWPF
         private readonly IMainService service;
         private readonly IReptService reportService;
         private readonly ICustomerService customerService;
+        private readonly IIndentPaymentService paymentService;
 
         private CustomerViewModel customer;
 
@@ -48,8 +49,9 @@ namespace ElectronicsStoreClientViewWPF
                 if (customer.CustomerStatus == true)
                 {
                     buttonCreateOrder.Visibility = Visibility.Collapsed;
-                    throw new Exception("Пользователь заблокирован");
-                }else
+                    System.Windows.MessageBox.Show("Пользователь заблокирован", "Пользователь заблокирован", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
                 {
                     buttonCreateOrder.Visibility = Visibility.Visible;
                 }
@@ -102,15 +104,15 @@ namespace ElectronicsStoreClientViewWPF
                 try
                 {
                     var form = Container.Resolve<FormPayIndent>();
+                    form.Id = id;
+                    form.full = true;
                     if (form.ShowDialog() == true)
                     {
                         if (form.Model != null)
                         {
-                            form.Model.IndentId = id;
-                            form.full = true;
-                            IndentViewModel view = service.GetElement(id);
-                            List<IndentPaymentViewModel> indentpayments = view.IndentPayments;
-                            indentpayments.Add(form.Model);
+                            //IndentViewModel view = service.GetElement(id);
+                            //List<IndentPaymentViewModel> indentpayments = view.IndentPayments;
+                            paymentService.AddElement(form.Model);
                         }
                         LoadData();
                     }
@@ -131,12 +133,12 @@ namespace ElectronicsStoreClientViewWPF
                 try
                 {
                     var form = Container.Resolve<FormPayIndent>();
+                            form.Model.IndentId = id;
+                            form.full = false;
                     if (form.ShowDialog() == true)
                     {
                         if (form.Model != null)
                         {
-                            form.Model.IndentId = id;
-                            form.full = false;
                             IndentViewModel view = service.GetElement(id);
                             List<IndentPaymentViewModel> indentpayments = view.IndentPayments;
                             indentpayments.Add(form.Model);
