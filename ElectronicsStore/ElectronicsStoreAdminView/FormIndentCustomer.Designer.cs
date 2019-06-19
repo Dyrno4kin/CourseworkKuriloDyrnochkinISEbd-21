@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.buttonRef = new System.Windows.Forms.Button();
-            this.buttonUpd = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -43,16 +42,6 @@
             this.buttonRef.Text = "Обновить";
             this.buttonRef.UseVisualStyleBackColor = true;
             this.buttonRef.Click += new System.EventHandler(this.buttonRef_Click);
-            // 
-            // buttonUpd
-            // 
-            this.buttonUpd.Location = new System.Drawing.Point(21, 389);
-            this.buttonUpd.Name = "buttonUpd";
-            this.buttonUpd.Size = new System.Drawing.Size(115, 46);
-            this.buttonUpd.TabIndex = 14;
-            this.buttonUpd.Text = "Изменить";
-            this.buttonUpd.UseVisualStyleBackColor = true;
-            this.buttonUpd.Click += new System.EventHandler(this.buttonUpd_Click);
             // 
             // dataGridView
             // 
@@ -69,7 +58,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1289, 458);
             this.Controls.Add(this.buttonRef);
-            this.Controls.Add(this.buttonUpd);
             this.Controls.Add(this.dataGridView);
             this.Name = "FormIndentCustomer";
             this.Text = "Клиенты";
@@ -82,7 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonRef;
-        private System.Windows.Forms.Button buttonUpd;
         private System.Windows.Forms.DataGridView dataGridView;
     }
 }

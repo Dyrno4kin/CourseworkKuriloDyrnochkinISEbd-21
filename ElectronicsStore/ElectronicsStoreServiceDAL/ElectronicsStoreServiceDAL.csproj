@@ -61,7 +61,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\CustomerIndentViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\IndentPaymentViewModel.cs" />
     <Compile Include="ViewModel\IndentViewModel.cs" />

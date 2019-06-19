@@ -312,7 +312,7 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                     {
                         continue;
                     }
-                    mailAddress = context.Customers.FirstOrDefault(rec1 => rec1.Id == list[i].CustomerId).Email;
+                    mailAddress = context.Customers.ToList().FirstOrDefault(rec1 => rec1.Id == list[i].CustomerId).Email;
                     text = $"{list[i].CustomerFIO}, Ваш заказ №{list[i].Id} от {list[i].DateCreate} не оплачен";
 
                     string login = ConfigurationManager.AppSettings["MailLogin"];

@@ -28,7 +28,12 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             {
                 Id = rec.Id,
                 CustomerId = rec.CustomerId,
-                DateCreate = SqlFunctions.DateName("dd", rec.DateCreate),
+                DateCreate = SqlFunctions.DateName("dd", rec.DateCreate)
+           + " " +
+            SqlFunctions.DateName("mm", rec.DateCreate) +
+           " " +
+            SqlFunctions.DateName("yyyy",
+           rec.DateCreate),
                 Status = rec.Status,
                 Sum = rec.Sum,
                 CustomerFIO = rec.Customer.CustomerFIO,
@@ -71,7 +76,12 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             List<IndentViewModel> result = context.Indents.Where(rec => rec.CustomerId == CustomerId).Select(rec => new IndentViewModel
             {
                 Id = rec.Id,
-                DateCreate = SqlFunctions.DateName("dd", rec.DateCreate),
+                DateCreate = SqlFunctions.DateName("dd", rec.DateCreate)
+           + " " +
+            SqlFunctions.DateName("mm", rec.DateCreate) +
+           " " +
+            SqlFunctions.DateName("yyyy",
+           rec.DateCreate),
                 Status = rec.Status,
                 Sum = rec.Sum,
 

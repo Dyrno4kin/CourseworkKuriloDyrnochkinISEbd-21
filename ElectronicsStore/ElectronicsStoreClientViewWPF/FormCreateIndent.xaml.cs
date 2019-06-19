@@ -23,17 +23,19 @@ namespace ElectronicsStoreClientViewWPF
 
         private readonly IMainService service;
         private readonly IProductService serviceProd;
+        private readonly ICustomerService serviceCustomer;
 
         private int? id;
 
         private List<IndentProductViewModel> indentproducts;
 
-        public FormCreateIndent(IMainService service, IProductService serviceProd)
+        public FormCreateIndent(IMainService service, IProductService serviceProd, ICustomerService serviceCustomer)
         {
             InitializeComponent();
             Loaded += FormCreateIndent_Load;
             this.service = service;
             this.serviceProd = serviceProd;
+            this.serviceCustomer = serviceCustomer;
         }
 
         private void FormCreateIndent_Load(object sender, RoutedEventArgs e)
@@ -73,7 +75,14 @@ namespace ElectronicsStoreClientViewWPF
                     {
                         foreach (IndentProductViewModel prod in indentproducts)
                         {
-                            textBoxPrice.Text = (Convert.ToInt32(textBoxPrice.Text) + prod.Count * Convert.ToInt32(serviceProd.GetElement(prod.ProductId).Price)).ToString();
+                            if (serviceCustomer.GetElement(customerId).Bonus == 0)
+                            {
+                                textBoxPrice.Text = (Convert.ToInt32(textBoxPrice.Text) + prod.Count * Convert.ToInt32(serviceProd.GetElement(prod.ProductId).Price)).ToString();
+                            }
+                            else
+                            {
+                                textBoxPrice.Text = (Convert.ToInt32(textBoxPrice.Text) + prod.Count * Convert.ToInt32(serviceProd.GetElement(prod.ProductId).Price) / 100 * (100 - serviceCustomer.GetElement(customerId).Bonus)).ToString();
+                            }
                         }
                     }
                 }

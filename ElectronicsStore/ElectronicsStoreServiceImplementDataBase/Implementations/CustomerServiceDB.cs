@@ -4,6 +4,7 @@ using ElectronicsStoreServiceDAL.Interfaces;
 using ElectronicsStoreServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                     Password = element.Password,
                     Login = element.Login,
                     CustomerStatus = element.CustomerStatus,
-                    
+
                     Indents = context.Indents
                 .Where(recPC => recPC.CustomerId == element.Id)
                 .Select(recPC => new IndentViewModel
@@ -91,12 +92,11 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             }
             element = new Customer
             {
-                //Id = model.Id,
                 DateRegistration = DateTime.Now,
                 Password = model.Password,
                 Login = model.Login,
                 CustomerStatus = false,
-                Bonus=0,
+                Bonus = 0,
                 CustomerFIO = model.CustomerFIO,
                 Email = model.Email
             };
@@ -124,7 +124,68 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             Customer element = context.Customers.FirstOrDefault(rec => rec.Id == id);
             if (element != null)
             {
-                element.CustomerStatus= !element.CustomerStatus;
+                element.CustomerStatus = !element.CustomerStatus;
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Элемент не найден");
+            }
+        }
+
+        public void setBonus(int id)
+        {
+            Customer element = context.Customers.FirstOrDefault(rec => rec.Id == id);
+            if (element != null)
+            {
+                var indents = context.Indents.Where(recPC => recPC.CustomerId == id).Select(rec => new IndentViewModel
+                {
+                    Sum = rec.Sum,
+                    DateCreate = SqlFunctions.DateName("dd", rec.DateCreate)
+                   + " " +
+                    SqlFunctions.DateName("mm", rec.DateCreate) +
+                   " " +
+                    SqlFunctions.DateName("yyyy",
+                   rec.DateCreate),
+
+                    IndentPayments = context.IndentPayments
+                    .Where(recPC => recPC.IndentId == rec.Id)
+                    .Select(recPC => new IndentPaymentViewModel
+                    {
+                        DatePayment = recPC.DatePayment
+                    })
+                    .ToList()
+                }).ToList();
+
+                if (indents.Select(x => x.Sum).Sum() >= 25000)
+                {
+                    element.Bonus = 5;
+                }
+                if (indents.Select(x => x.Sum).Sum() >= 75000)
+                {
+                    element.Bonus = 10;
+                }
+                if (indents.Select(x => x.Sum).Sum() >= 150000)
+                {
+                    element.Bonus = 20;
+                }
+                foreach (var indent in indents)
+                {
+                    if (indent.IndentPayments.Count == 0)
+                    {
+                        if ((indent.Status != IndentStatus.Оплачен) &&
+                            (DateTime.ParseExact(indent.DateCreate.Replace(" ", ""), "ddMMMMyyyy", null).AddDays(8) < DateTime.Now))
+                        {
+                            element.CustomerStatus = true;
+                        }
+                    }
+                    else{
+                        if ((indent.Status != IndentStatus.Оплачен) && (indent.IndentPayments.ToList().Last().DatePayment.Value.AddDays(8) < DateTime.Now))
+                        {
+                            element.CustomerStatus = true;
+                        }
+                    }
+                }
                 context.SaveChanges();
             }
             else

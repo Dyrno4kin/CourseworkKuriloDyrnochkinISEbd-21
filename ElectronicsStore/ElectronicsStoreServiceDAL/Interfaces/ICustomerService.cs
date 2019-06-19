@@ -24,5 +24,7 @@ namespace ElectronicsStoreServiceDAL.Interfaces
         void UpdElement(CustomerBindingModel model);
         [UsageMethod("Метод блокировки клиента")]
         void Block(int id);
+        [UsageMethod("Метод просчёта бонусов")]
+        void setBonus(int id);
     }
 }

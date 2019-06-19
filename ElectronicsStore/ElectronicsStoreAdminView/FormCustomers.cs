@@ -89,5 +89,21 @@ namespace ElectronicsStoreAdminView
                 }
             }
         }
+
+        private void buttonBonuses_Click(object sender, EventArgs e)
+        {
+            foreach (var customer in service.GetList()) {
+                try
+                {
+                    service.setBonus(customer.Id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                LoadData();
+            }
+        }
     }
 }

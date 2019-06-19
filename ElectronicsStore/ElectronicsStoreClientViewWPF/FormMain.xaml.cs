@@ -48,6 +48,7 @@ namespace ElectronicsStoreClientViewWPF
             try
             {
                 customer = customerService.GetElement(login);
+                customerService.setBonus(customer.Id);
                 if (customer.CustomerStatus == true)
                 {
                     buttonCreateOrder.Visibility = Visibility.Collapsed;
@@ -237,6 +238,12 @@ namespace ElectronicsStoreClientViewWPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            LoadData();
+        }
+
+        private void buttonBonus_Click(object sender, RoutedEventArgs e)
+        {
+            customerService.setBonus(customer.Id);
             LoadData();
         }
     }

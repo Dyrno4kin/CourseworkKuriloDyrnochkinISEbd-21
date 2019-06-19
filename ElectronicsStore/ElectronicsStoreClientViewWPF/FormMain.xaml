@@ -23,9 +23,10 @@
         </Menu>
         <DataGrid x:Name="dataGridViewMain" HorizontalAlignment="Left" Height="272" Margin="14,35,0,0" VerticalAlignment="Top" Width="880" IsReadOnly="True" Grid.ColumnSpan="2"/>
         <Button x:Name="buttonCreateOrder" Content="Создать заказ" HorizontalAlignment="Left" Margin="301.208,35,0,0" VerticalAlignment="Top" Width="138" Height="28" Click="buttonCreateOrder_Click" Grid.Column="1"/>
-        <Button x:Name="buttonRef" Content="Обновить список" HorizontalAlignment="Left" Margin="301.208,279,0,0" VerticalAlignment="Top" Width="138" Height="28" Click="buttonRef_Click" Grid.Column="1"/>
-        <Button x:Name="buttonPayPolnost" Content="Оплатить полностью" HorizontalAlignment="Left" VerticalAlignment="Top" Width="138" Margin="301.208,203,0,0" Height="28" Click="buttonPayPolnost_Click" Grid.Column="1"/>
-        <Button x:Name="buttonPayChastich" Content="Оплатить частично" HorizontalAlignment="Left" VerticalAlignment="Top" Width="138" Margin="301.208,122,0,0" Height="28" Click="buttonPayChastich_Click" Grid.Column="1"/>
+        <Button x:Name="buttonRef" Content="Обновить список" HorizontalAlignment="Left" Margin="300.8,134,0,0" VerticalAlignment="Top" Width="138" Height="28" Click="buttonRef_Click" Grid.Column="1"/>
+        <Button x:Name="buttonPayPolnost" Content="Оплатить полностью" HorizontalAlignment="Left" VerticalAlignment="Top" Width="138" Margin="300.8,101,0,0" Height="28" Click="buttonPayPolnost_Click" Grid.Column="1"/>
+        <Button x:Name="buttonPayChastich" Content="Оплатить частично" HorizontalAlignment="Left" VerticalAlignment="Top" Width="138" Margin="300.8,68,0,0" Height="28" Click="buttonPayChastich_Click" Grid.Column="1"/>
+        <Button x:Name="buttonBonus" Content="Бонусы" HorizontalAlignment="Left" Margin="301.8,167,0,0" VerticalAlignment="Top" Width="138" Height="28" Click="buttonBonus_Click" Grid.Column="1"/>
 
     </Grid>
 </Window>
