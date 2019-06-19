@@ -1,0 +1,14 @@
+﻿<Window x:Class="ElectronicsStoreClientViewWPF.FormPaymentsIndent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElectronicsStoreClientViewWPF"
+        mc:Ignorable="d"
+        Title="Оплаты по заказу" Height="297.897" Width="305.666">
+    <Grid Margin="0,0,2.302,3.415">
+        <GroupBox x:Name="groupBox" Header="Оплаты" HorizontalAlignment="Left" Height="250" Margin="10,10,-0.151,0" VerticalAlignment="Top" Width="284">
+            <DataGrid x:Name="dataGridViewPayments" HorizontalAlignment="Left" Height="231" VerticalAlignment="Top" Width="265" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Margin="0,0,0,-1.868" IsReadOnly="True" CanUserReorderColumns="False"/>
+        </GroupBox>
+    </Grid>
+</Window>

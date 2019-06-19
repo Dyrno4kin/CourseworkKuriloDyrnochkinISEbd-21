@@ -43,12 +43,14 @@
   <ItemGroup>
     <Compile Include="Attributies\UsageInterfaceAttribute.cs" />
     <Compile Include="Attributies\UsageMethodAttribute.cs" />
+    <Compile Include="BindingModel\BackupBindingModel.cs" />
     <Compile Include="BindingModel\CustomerBindingModel.cs" />
     <Compile Include="BindingModel\IndentPaymentBindingModel.cs" />
     <Compile Include="BindingModel\IndentBindingModel.cs" />
     <Compile Include="BindingModel\IndentProductBindingModel.cs" />
     <Compile Include="BindingModel\ProductBindingModel.cs" />
     <Compile Include="BindingModel\ReptBindingModel.cs" />
+    <Compile Include="Interfaces\IBackupService.cs" />
     <Compile Include="Interfaces\ICustomerService.cs" />
     <Compile Include="Interfaces\IIndentPaymentService.cs" />
     <Compile Include="Interfaces\IIndentProductService.cs" />

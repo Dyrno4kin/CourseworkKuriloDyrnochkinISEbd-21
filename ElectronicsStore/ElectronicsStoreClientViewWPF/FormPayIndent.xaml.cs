@@ -52,6 +52,7 @@ namespace ElectronicsStoreClientViewWPF
                     {
                         textBoxPrice.Text = service.GetBalance(id.Value).ToString();
                     }
+                    labelSum.Content = service.GetBalance(id.Value).ToString();
                 }
                 catch (Exception ex)
                 {

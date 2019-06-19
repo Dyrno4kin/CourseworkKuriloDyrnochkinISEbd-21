@@ -33,6 +33,7 @@ namespace ElectronicsStoreClientViewWPF
             currentContainer.RegisterType<IIndentPaymentService, IndentPaymentDB>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IMainService, MainServiceDB>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IReptService, ReptServiceDB>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IBackupService, BackupServiceDB>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectronicsStoreClientViewWPF"
         mc:Ignorable="d"
-        Title="FormPayIndent" Height="169.255" Width="277.823" Loaded="FormIndentProduct_Load">
+        Title="Оплата заказа" Height="169.255" Width="277.823" Loaded="FormIndentProduct_Load">
     <Grid>
         <Label x:Name="labelPrice" Content="Сумма:" HorizontalAlignment="Left" Margin="32,20,0,0" VerticalAlignment="Top" Width="63"/>
         <TextBox x:Name="textBoxPrice" HorizontalAlignment="Left" Height="20" Margin="112,24,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
 
         <Button x:Name="buttonSave" Content="Оплатить" HorizontalAlignment="Left" Margin="32,85,0,0" VerticalAlignment="Top" Width="76" Click="buttonSave_Click"/>
         <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="150,85,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancel_Click"/>
+        <Label Content="Осталось оплатить:" HorizontalAlignment="Left" Margin="32,56,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelSum" Content="" HorizontalAlignment="Left" Margin="139,56,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

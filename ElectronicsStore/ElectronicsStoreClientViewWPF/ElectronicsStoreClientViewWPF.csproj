@@ -112,6 +112,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FormPaymentsIndent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormProductInIndent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FormProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,6 +136,12 @@
   <ItemGroup>
     <Compile Include="FormPayIndent.xaml.cs">
       <DependentUpon>FormPayIndent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormPaymentsIndent.xaml.cs">
+      <DependentUpon>FormPaymentsIndent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormProductInIndent.xaml.cs">
+      <DependentUpon>FormProductInIndent.xaml</DependentUpon>
     </Compile>
     <Compile Include="FormProducts.xaml.cs">
       <DependentUpon>FormProducts.xaml</DependentUpon>

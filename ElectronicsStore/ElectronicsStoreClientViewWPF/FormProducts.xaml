@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="Товары" Height="367.056" Width="378.368" Loaded="FormProducts_Load">
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Margin="0,0,2.491,2.679">
-        <DataGrid x:Name="dataGridViewCanFoods" HorizontalAlignment="Left" Height="312" VerticalAlignment="Top" Width="350" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" IsReadOnly="True" SelectionMode="Single" Margin="10,10,0,0"/>
+        <DataGrid x:Name="dataGridViewProducts" HorizontalAlignment="Left" Height="312" VerticalAlignment="Top" Width="350" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" IsReadOnly="True" SelectionMode="Single" Margin="10,10,0,0"/>
     </Grid>
 </Window>

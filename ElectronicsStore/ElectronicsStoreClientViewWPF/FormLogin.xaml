@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectronicsStoreClientViewWPF"
         mc:Ignorable="d"
-        Title="Авторизация" Height="209.462" Width="237.363">
+        Title="Авторизация" Height="209.462" Width="249.137">
     <Grid>
-        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Margin="84,36,0,0"/>
-        <TextBox x:Name="textBoxPass" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Margin="84,82,0,0"/>
-        <Label Content="Логин:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,33,0,0" Width="79"/>
-        <Label Content="Пароль:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,79,0,0" Width="68"/>
-        <Button x:Name="buttonSave" Content="Войти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="20,147,0,0" Click="buttonSave_Click"/>
-        <Button x:Name="buttonCancel" Content="Выход" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="131,147,0,0" Click="buttonCancel_Click"/>
+        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Margin="84,36,0,0"/>
+        <TextBox x:Name="textBoxPass" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Margin="84,82,0,0"/>
+        <Label Content="Логин:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="33,36,0,0" Width="46"/>
+        <Label Content="Пароль:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="33,81,0,0" Width="51"/>
+        <Button x:Name="buttonSave" Content="Войти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,147,0,0" Click="buttonSave_Click"/>
+        <Button x:Name="buttonCancel" Content="Выход" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="157,147,0,0" Click="buttonCancel_Click"/>
     </Grid>
 </Window>

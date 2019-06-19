@@ -176,6 +176,8 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                         Id = recPC.Id,
                         IndentId = recPC.IndentId,
                         ProductId = recPC.ProductId,
+                        ProductName = recPC.Product.ProductName,
+                        Sum = recPC.Product.Price*recPC.Count,
                         Count = recPC.Count
                     })
                     .ToList(),

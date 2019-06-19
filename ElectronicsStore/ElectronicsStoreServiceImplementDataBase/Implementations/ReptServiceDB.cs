@@ -16,6 +16,9 @@ using System.Data.Entity.SqlServer;
 using System.Configuration;
 using System.Net.Mail;
 using System.Net;
+using System.Runtime.Serialization.Json;
+using ElectronicsStoreModel;
+using Task = System.Threading.Tasks.Task;
 
 namespace ElectronicsStoreServiceImplementDataBase.Implementations
 {
@@ -428,6 +431,6 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             //вставляем таблицу
             doc.Add(table);
             doc.Close();
-        }       
+        }        
     }
 }

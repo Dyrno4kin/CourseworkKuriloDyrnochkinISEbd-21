@@ -31,16 +31,18 @@ namespace ElectronicsStoreClientViewWPF
         private readonly IReptService reportService;
         private readonly ICustomerService customerService;
         private readonly IIndentPaymentService paymentService;
+        private readonly IBackupService backupService;
 
         private CustomerViewModel customer;
 
-        public FormMain(IMainService service, IReptService reportService, ICustomerService customerService, IIndentPaymentService paymentService)
+        public FormMain(IMainService service, IReptService reportService, ICustomerService customerService, IIndentPaymentService paymentService, IBackupService backupService)
         {
             InitializeComponent();
             this.service = service;
             this.reportService = reportService;
             this.customerService = customerService;
             this.paymentService = paymentService;
+            this.backupService = backupService;
         }
 
         private void LoadData()
@@ -66,8 +68,9 @@ namespace ElectronicsStoreClientViewWPF
                     {
                     dataGridViewMain.Columns[0].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[1].Visibility = Visibility.Hidden;
-                    dataGridViewMain.Columns[3].Visibility = Visibility.Hidden;
-                    dataGridViewMain.Columns[5].Visibility = Visibility.Hidden;
+                    dataGridViewMain.Columns[2].Visibility = Visibility.Hidden;
+                    dataGridViewMain.Columns[6].Visibility = Visibility.Hidden;
+                    dataGridViewMain.Columns[7].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[1].Width = DataGridLength.Auto;
                     }
 
@@ -179,7 +182,6 @@ namespace ElectronicsStoreClientViewWPF
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.ToString());
-
             }
         }
 
@@ -245,6 +247,66 @@ namespace ElectronicsStoreClientViewWPF
         {
             customerService.setBonus(customer.Id);
             LoadData();
+        }
+
+        private void бэкапJsonToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "json|*.json"
+            };
+            if (sfd.ShowDialog() == true)
+            {
+                try
+                {
+                    backupService.BackupToJson(new BackupBindingModel
+                    {
+                        FileName = sfd.FileName
+                    });
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void бэкапXMLToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                backupService.BackupToXML();
+                MessageBox.Show("Выполнено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void buttonListProductInIndent_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridViewMain.SelectedItem != null)
+            {
+                var form = Container.Resolve<FormProductInIndent>();
+                form.customerId = customer.Id;
+                form.Id = ((IndentViewModel)dataGridViewMain.SelectedItem).Id;
+                if (form.ShowDialog() == true)
+                    LoadData();
+            }
+        }
+
+        private void buttonPaymentsIndent_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridViewMain.SelectedItem != null)
+            {
+                var form = Container.Resolve<FormPaymentsIndent>();
+                form.customerId = customer.Id;
+                form.Id = ((IndentViewModel)dataGridViewMain.SelectedItem).Id;
+                if (form.ShowDialog() == true)
+                    LoadData();
+            }
         }
     }
 }

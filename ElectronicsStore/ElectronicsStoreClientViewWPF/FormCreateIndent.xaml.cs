@@ -70,6 +70,9 @@ namespace ElectronicsStoreClientViewWPF
                     dataGridViewProduct.ItemsSource = null;
                     textBoxPrice.Text = "0";
                     dataGridViewProduct.ItemsSource = indentproducts;
+                    dataGridViewProduct.Columns[0].Visibility = Visibility.Hidden;
+                    dataGridViewProduct.Columns[1].Visibility = Visibility.Hidden;
+                    dataGridViewProduct.Columns[2].Visibility = Visibility.Hidden;
                     dataGridViewProduct.Columns[3].Width = DataGridLength.Auto;
                     if (indentproducts != null)
                     {

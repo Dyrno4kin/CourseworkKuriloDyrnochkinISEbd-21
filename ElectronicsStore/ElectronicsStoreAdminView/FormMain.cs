@@ -3,12 +3,6 @@ using ElectronicsStoreServiceDAL.Interfaces;
 using ElectronicsStoreServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 
@@ -20,12 +14,14 @@ namespace ElectronicsStoreAdminView
         public new IUnityContainer Container { get; set; }
         private readonly IProductService service;
         private IReptService reptService;
+        private readonly IBackupService backupService;
 
-        public FormMain(IProductService service, IReptService reptService)
+        public FormMain(IProductService service, IReptService reptService, IBackupService backupService)
         {
             InitializeComponent();
             this.service = service;
             this.reptService = reptService;
+            this.backupService = backupService;
         }
 
 
@@ -116,6 +112,47 @@ namespace ElectronicsStoreAdminView
         {
             var form = Container.Resolve<FormReport>();
             form.ShowDialog();
+        }
+
+       
+        private void бэкапВФорматеJsonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "json|*.json"
+            };
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    backupService.BackupToJson(new BackupBindingModel
+                    {
+                        FileName = sfd.FileName,
+                    });
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void бэкапВФорматеXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                backupService.BackupToXML();
+                MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+            }
         }
     }
 }

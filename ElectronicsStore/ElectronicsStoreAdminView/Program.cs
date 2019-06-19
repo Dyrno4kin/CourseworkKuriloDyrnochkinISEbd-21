@@ -2,10 +2,7 @@
 using ElectronicsStoreServiceImplementDataBase;
 using ElectronicsStoreServiceImplementDataBase.Implementations;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 using Unity.Lifetime;
@@ -43,6 +40,7 @@ namespace ElectronicsStoreAdminView
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<IReptService, ReptServiceDB>(new
            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IBackupService, BackupServiceDB>(new HierarchicalLifetimeManager());
 
             return currentContainer;
         }
