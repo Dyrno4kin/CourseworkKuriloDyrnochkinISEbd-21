@@ -20,6 +20,8 @@ namespace ElectronicsStoreServiceDAL.Interfaces
         IndentViewModel GetElement(int id);
         [UsageMethod("Метод добавления заказа")]
         void CreateIndent(IndentBindingModel model);
+        [UsageMethod("Метод установки статуса")]
+        void SetStatus(IndentViewModel model);
         int GetBalance(int id);
     }
 }

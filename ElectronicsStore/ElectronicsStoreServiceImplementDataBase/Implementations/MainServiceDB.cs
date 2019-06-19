@@ -59,6 +59,13 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             return result;
         }
 
+        public void SetStatus(IndentViewModel model)
+        {
+            Indent element = context.Indents.FirstOrDefault(rec => rec.Id == model.Id);
+            element.Status = IndentStatus.Оплачен;
+            context.SaveChanges();
+        }
+
         public List<IndentViewModel> GetListCustomer(int CustomerId)
         {
             List<IndentViewModel> result = context.Indents.Where(rec => rec.CustomerId == CustomerId).Select(rec => new IndentViewModel

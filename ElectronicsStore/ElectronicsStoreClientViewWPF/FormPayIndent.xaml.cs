@@ -33,6 +33,7 @@ namespace ElectronicsStoreClientViewWPF
         IndentViewModel indent;
 
         public IndentPaymentViewModel Model { set { model = value; } get { return model; } }
+        private IndentPaymentViewModel model;
 
         public FormPayIndent(IMainService service)
         {
@@ -79,7 +80,7 @@ namespace ElectronicsStoreClientViewWPF
                 {
                     model = new IndentPaymentViewModel
                     {
-                        Id = id.Value,
+                        IndentId = id.Value,
                         SumPayment = Convert.ToInt32(textBoxPrice.Text),
                         DatePayment = DateTime.Now
                     };

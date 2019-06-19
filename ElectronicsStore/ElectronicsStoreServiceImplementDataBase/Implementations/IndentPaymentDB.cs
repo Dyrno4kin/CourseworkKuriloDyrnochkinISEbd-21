@@ -45,23 +45,23 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             }
             throw new Exception("Элемент не найден");
         }
-        public void AddElement(IndentPaymentBindingModel model)
+        public void AddElement(IndentPaymentViewModel model)
         {
             IndentPayment element = context.IndentPayments.FirstOrDefault(rec => rec.Id == model.Id);
             if (element != null)
             {
                 throw new Exception("Уже есть оплата с таким id");
             }
-            context.IndentPayments.Add(new IndentPayment
+            var payment = new IndentPayment
             {
-                Id = element.Id,
-                IndentId = element.IndentId,
+                IndentId = model.IndentId,
                 DatePayment = DateTime.Now,
-                SumPayment = element.SumPayment
-            });
+                SumPayment = model.SumPayment
+            };
+            context.IndentPayments.Add(payment);
             context.SaveChanges();
         }
-        public void UpdElement(IndentPaymentBindingModel model)
+        public void UpdElement(IndentPaymentViewModel model)
         {
             IndentPayment element = context.IndentPayments.FirstOrDefault(rec => rec.Id == model.Id);
             if (element != null)

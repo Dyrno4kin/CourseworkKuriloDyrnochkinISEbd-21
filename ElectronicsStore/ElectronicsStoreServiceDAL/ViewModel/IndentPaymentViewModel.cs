@@ -11,7 +11,7 @@ namespace ElectronicsStoreServiceDAL.ViewModel
         [DataMember]
         public int IndentId { get; set; }
         [DataMember]
-        public DateTime DatePayment { get; set; }
+        public DateTime? DatePayment { get; set; }
         [DataMember]
         public decimal SumPayment { get; set; }
     }

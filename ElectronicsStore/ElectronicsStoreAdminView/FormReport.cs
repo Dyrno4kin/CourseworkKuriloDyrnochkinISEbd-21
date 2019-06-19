@@ -47,15 +47,18 @@ namespace ElectronicsStoreAdminView
                 " по " +
                dateTimePickerTo.Value.ToShortDateString());
                 reportViewer.LocalReport.SetParameters(parameter);
-                var dataSource = service.GetCustomerIndents(new ReptBindingModel
+                var rept = new ReptBindingModel
                 {
                     DateFrom = dateTimePickerFrom.Value,
                     DateTo = dateTimePickerTo.Value
-                });
+                };
+
+                var dataSource = service.GetCustomerIndents(rept);
                 reportViewer.LocalReport.DataSources.Clear();
                 ReportDataSource source = new ReportDataSource("DataSet", dataSource);
                 reportViewer.LocalReport.DataSources.Add(source);
-                source = new ReportDataSource("DataSetPayment", dataSource);
+                var dataSourcePayment = service.GetIndentInfo(rept);
+                source = new ReportDataSource("DataSetPayment", dataSourcePayment);
                 reportViewer.LocalReport.DataSources.Add(source);
                 reportViewer.RefreshReport();
             }

@@ -17,9 +17,9 @@ namespace ElectronicsStoreServiceDAL.Interfaces
         [UsageMethod("Метод получения оплаты по id")]
         IndentPaymentViewModel GetElement(int id);
         [UsageMethod("Метод добавления оплаты")]
-        void AddElement(IndentPaymentBindingModel model);
+        void AddElement(IndentPaymentViewModel model);
         [UsageMethod("Метод изменения оплат по заказу")]
-        void UpdElement(IndentPaymentBindingModel model);
+        void UpdElement(IndentPaymentViewModel model);
         [UsageMethod("Метод удаления оплаты")]
         void DelElement(int id);
     }

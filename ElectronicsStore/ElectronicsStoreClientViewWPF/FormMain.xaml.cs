@@ -1,4 +1,5 @@
-﻿using ElectronicsStoreServiceDAL.BindingModel;
+﻿using ElectronicsStoreModel;
+using ElectronicsStoreServiceDAL.BindingModel;
 using ElectronicsStoreServiceDAL.Interfaces;
 using ElectronicsStoreServiceDAL.ViewModel;
 using Microsoft.Win32;
@@ -33,12 +34,13 @@ namespace ElectronicsStoreClientViewWPF
 
         private CustomerViewModel customer;
 
-        public FormMain(IMainService service, IReptService reportService, ICustomerService customerService)
+        public FormMain(IMainService service, IReptService reportService, ICustomerService customerService, IIndentPaymentService paymentService)
         {
             InitializeComponent();
             this.service = service;
             this.reportService = reportService;
             this.customerService = customerService;
+            this.paymentService = paymentService;
         }
 
         private void LoadData()
@@ -57,7 +59,8 @@ namespace ElectronicsStoreClientViewWPF
                 }
                 if (customer != null)
                 {
-                    dataGridViewMain.ItemsSource = service.GetListCustomer(customer.Id);
+                    var indents = service.GetListCustomer(customer.Id);
+                    dataGridViewMain.ItemsSource = indents;
                     if (dataGridViewMain.Columns.Count > 0)
                     {
                     dataGridViewMain.Columns[0].Visibility = Visibility.Hidden;
@@ -66,6 +69,13 @@ namespace ElectronicsStoreClientViewWPF
                     dataGridViewMain.Columns[5].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[1].Width = DataGridLength.Auto;
                     }
+
+                    foreach (var indent in indents)
+                    {
+                        if (service.GetBalance(indent.Id) == 0)
+                            service.SetStatus(indent);
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -92,7 +102,6 @@ namespace ElectronicsStoreClientViewWPF
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.ToString());
-
             }
         }
 
@@ -100,6 +109,11 @@ namespace ElectronicsStoreClientViewWPF
         {
             if (dataGridViewMain.SelectedItem != null)
             {
+                if (((IndentViewModel)dataGridViewMain.SelectedItem).Status == IndentStatus.Оплачен)
+                {
+                    System.Windows.MessageBox.Show("Заказ уже полностью оплачен", "Заказ", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
                 int id = ((IndentViewModel)dataGridViewMain.SelectedItem).Id;
                 try
                 {
@@ -110,8 +124,6 @@ namespace ElectronicsStoreClientViewWPF
                     {
                         if (form.Model != null)
                         {
-                            //IndentViewModel view = service.GetElement(id);
-                            //List<IndentPaymentViewModel> indentpayments = view.IndentPayments;
                             paymentService.AddElement(form.Model);
                         }
                         LoadData();
@@ -129,19 +141,22 @@ namespace ElectronicsStoreClientViewWPF
         {
             if (dataGridViewMain.SelectedItem != null)
             {
+                if (((IndentViewModel)dataGridViewMain.SelectedItem).Status == IndentStatus.Оплачен)
+                {
+                    System.Windows.MessageBox.Show("Заказ уже полностью оплачен", "Заказ", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
                 int id = ((IndentViewModel)dataGridViewMain.SelectedItem).Id;
                 try
                 {
                     var form = Container.Resolve<FormPayIndent>();
-                            form.Model.IndentId = id;
-                            form.full = false;
+                    form.Id = id;
+                    form.full = false;
                     if (form.ShowDialog() == true)
                     {
                         if (form.Model != null)
                         {
-                            IndentViewModel view = service.GetElement(id);
-                            List<IndentPaymentViewModel> indentpayments = view.IndentPayments;
-                            indentpayments.Add(form.Model);
+                            paymentService.AddElement(form.Model);
                         }
                         LoadData();
                     }

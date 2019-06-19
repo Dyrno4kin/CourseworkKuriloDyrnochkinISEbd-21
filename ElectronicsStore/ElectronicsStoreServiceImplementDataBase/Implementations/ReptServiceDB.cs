@@ -253,9 +253,46 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             SqlFunctions.DateName("yyyy",
            rec.DateCreate),
                 Sum = rec.Sum,
-                Status = rec.Status
+                Status = rec.Status,
+                
+                IndentPayments = context.IndentPayments
+                .Where(recPC => recPC.IndentId == rec.Id)
+                .Select(recPC => new IndentPaymentViewModel
+                {
+                    Id = recPC.Id,
+                    IndentId = recPC.IndentId,
+                    DatePayment = recPC.DatePayment,
+                    SumPayment = recPC.SumPayment
+                })
+                .ToList()
+
             })
            .ToList();
+        }
+
+        public List<IndentPaymentViewModel> GetIndentInfo(ReptBindingModel model)
+        {
+            List<IndentPaymentViewModel> payment = new List<IndentPaymentViewModel>();
+            foreach (var indent in GetCustomerIndents(model))
+            {
+                if (indent.IndentPayments.Count == 0)
+                {
+                    payment.Add(new IndentPaymentViewModel
+                    {
+                        DatePayment = null,
+                        SumPayment = service.GetBalance(indent.Id)
+                    });
+                }
+                else
+                {
+                    payment.Add(new IndentPaymentViewModel
+                    {
+                        DatePayment = indent.IndentPayments.ToList().LastOrDefault().DatePayment,
+                        SumPayment = service.GetBalance(indent.Id)
+                    });
+                }
+            }
+            return payment;
         }
 
         public void SendEmail(ReptBindingModel model)
