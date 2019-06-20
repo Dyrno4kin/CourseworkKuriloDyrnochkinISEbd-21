@@ -46,7 +46,7 @@ namespace ElectronicsStoreClientViewWPF
             }
             try
             {
-                reportViewer.LocalReport.ReportEmbeddedResource = "ElectronicsStoreClientViewWPF.Report.rdlc";
+                reportViewer.LocalReport.ReportEmbeddedResource = "ElectronicsStoreClientViewWPF.ReportIndent.rdlc";
                 ReportParameter parameter = new ReportParameter("ReportParameterPeriod",
                                             "c " + dateTimePickerFrom.SelectedDate.ToString() +
                                             " по " + dateTimePickerTo.SelectedDate.ToString());
@@ -62,7 +62,7 @@ namespace ElectronicsStoreClientViewWPF
                 reportViewer.LocalReport.DataSources.Clear();
                 ReportDataSource source = new ReportDataSource("DataSet", dataSource);
                 reportViewer.LocalReport.DataSources.Add(source);
-                var dataSourcePayment = service.GetIndentInfo(rept);
+                var dataSourcePayment = service.GetIndentInfoForClients(rept, customerId);
                 source = new ReportDataSource("DataSetPayment", dataSourcePayment);
                 reportViewer.LocalReport.DataSources.Add(source);
                 reportViewer.RefreshReport();

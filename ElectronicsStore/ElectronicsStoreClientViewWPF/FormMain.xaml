@@ -23,7 +23,7 @@
             </MenuItem>
         </Menu>
         <DataGrid x:Name="dataGridViewMain" HorizontalAlignment="Left" Height="272" Margin="2,22,0,0" VerticalAlignment="Top" Width="289" IsReadOnly="True"/>
-        <Button x:Name="buttonCreateOrder" Content="Создать заказ" HorizontalAlignment="Left" Margin="311,27,0,251" Width="266" Click="buttonCreateOrder_Click" RenderTransformOrigin="0.507,0.372"/>
+        <Button x:Name="buttonCreateOrder" Content="Создать заказ" HorizontalAlignment="Left" Margin="311,22,0,250.713" Width="266" Click="buttonCreateOrder_Click" RenderTransformOrigin="0.507,0.372"/>
         <Button x:Name="buttonRef" Content="Обновить список" HorizontalAlignment="Left" Margin="311,162,0,0" VerticalAlignment="Top" Width="266" Height="20" Click="buttonRef_Click"/>
         <Button x:Name="buttonPayPolnost" Content="Оплатить полностью" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Margin="448,52,0,0" Height="20" Click="buttonPayPolnost_Click"/>
         <Button x:Name="buttonPayChastich" Content="Оплатить частично" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Margin="311,52,0,0" Height="20" Click="buttonPayChastich_Click"/>

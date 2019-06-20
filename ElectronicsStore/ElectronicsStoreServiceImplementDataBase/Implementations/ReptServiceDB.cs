@@ -293,6 +293,31 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             return payment;
         }
 
+        public List<IndentPaymentViewModel> GetIndentInfoForClients(ReptBindingModel model, int customerId)
+        {
+            List<IndentPaymentViewModel> payment = new List<IndentPaymentViewModel>();
+            foreach (var indent in GetCustomerIndentsForClients(model, customerId))
+            {
+                if (indent.IndentPayments.Count == 0)
+                {
+                    payment.Add(new IndentPaymentViewModel
+                    {
+                        DatePayment = null,
+                        SumPayment = service.GetBalance(indent.Id)
+                    });
+                }
+                else
+                {
+                    payment.Add(new IndentPaymentViewModel
+                    {
+                        DatePayment = indent.IndentPayments.ToList().LastOrDefault().DatePayment,
+                        SumPayment = service.GetBalance(indent.Id)
+                    });
+                }
+            }
+            return payment;
+        }
+
         public void SendEmail(ReptBindingModel model)
         {
             string mailAddress = null;
