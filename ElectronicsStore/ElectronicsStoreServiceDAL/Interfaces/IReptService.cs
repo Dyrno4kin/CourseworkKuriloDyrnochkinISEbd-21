@@ -22,6 +22,10 @@ namespace ElectronicsStoreServiceDAL.Interfaces
         List<IndentPaymentViewModel> GetIndentInfo(ReptBindingModel model);
         [UsageMethod("Метод получения отчёта по id")]
         void SaveCustomerIndents(ReptBindingModel model);
+        [UsageMethod("Метод получения отчёта по заказам для клиента")]
+        void SaveCustomerIndentsForClients(ReptBindingModel model, int customerId);
+        [UsageMethod("Метод получения списка заказов для клиента")]
+        List<IndentViewModel> GetCustomerIndentsForClients(ReptBindingModel model, int customerId);
         [UsageMethod("Метод отправления писем")]
         void SendEmail(ReptBindingModel model);
     }
