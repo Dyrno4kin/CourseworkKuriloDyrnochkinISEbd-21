@@ -30,6 +30,7 @@
         {
             this.buttonRef = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.buttonSend = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +53,22 @@
             this.dataGridView.Size = new System.Drawing.Size(987, 371);
             this.dataGridView.TabIndex = 13;
             // 
+            // buttonSend
+            // 
+            this.buttonSend.Location = new System.Drawing.Point(163, 399);
+            this.buttonSend.Name = "buttonSend";
+            this.buttonSend.Size = new System.Drawing.Size(297, 46);
+            this.buttonSend.TabIndex = 17;
+            this.buttonSend.Text = "Отправить по почте";
+            this.buttonSend.UseVisualStyleBackColor = true;
+            this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
+            // 
             // FormIndentCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1042, 457);
+            this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.dataGridView);
             this.Name = "FormIndentCustomer";
@@ -71,5 +83,6 @@
 
         private System.Windows.Forms.Button buttonRef;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button buttonSend;
     }
 }

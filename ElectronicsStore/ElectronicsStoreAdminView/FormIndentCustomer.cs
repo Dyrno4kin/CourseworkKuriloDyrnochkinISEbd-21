@@ -1,4 +1,5 @@
-﻿using ElectronicsStoreServiceDAL.Interfaces;
+﻿using ElectronicsStoreServiceDAL.BindingModel;
+using ElectronicsStoreServiceDAL.Interfaces;
 using ElectronicsStoreServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,15 @@ namespace ElectronicsStoreAdminView
         public new IUnityContainer Container { get; set; }
         public int Id { set { id = value; } }
         private readonly ICustomerService service;
+        private readonly IReptService serviceReport;
         private int? id;
         private List<IndentViewModel> indent;
 
-        public FormIndentCustomer(ICustomerService service)
+        public FormIndentCustomer(ICustomerService service, IReptService serviceReport)
         {
             InitializeComponent();
             this.service = service;
+            this.serviceReport = serviceReport;
         }
 
         private void FormCustomer_Load(object sender, EventArgs e)
@@ -88,6 +91,22 @@ namespace ElectronicsStoreAdminView
         {
             LoadData();
         }
-        
+
+        private void buttonSend_Click(object sender, EventArgs e)
+        {
+
+            var model = service.GetElement(id.Value);
+
+            serviceReport.SaveIndentCustomerW(new ReptBindingModel
+            {
+                FileName = "D:\\ФИСТ ИСЭбд\\Тех. программирование\\ReportIndentWord.doc"
+            }, model);
+
+            serviceReport.SaveIndentCustomerXls(new ReptBindingModel
+            {
+                FileName = "D:\\ФИСТ ИСЭбд\\Тех. программирование\\ReportIndentXls.xls"
+            }, model);
+
+        }
     }
 }

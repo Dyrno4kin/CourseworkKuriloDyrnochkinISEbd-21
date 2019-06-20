@@ -30,5 +30,9 @@ namespace ElectronicsStoreServiceDAL.Interfaces
         void SaveCustomerIndentsForClients(ReptBindingModel model, int customerId);
         [UsageMethod("Метод отправления писем")]
         void SendEmail(ReptBindingModel model);
+        [UsageMethod("Метод добавления отчёта по клиенту word")]
+        void SaveIndentCustomerXls(ReptBindingModel model, CustomerViewModel customer);
+        [UsageMethod("Метод добавления отчёта по клиенту word")]
+        void SaveIndentCustomerW(ReptBindingModel model, CustomerViewModel customer);
     }
 }
