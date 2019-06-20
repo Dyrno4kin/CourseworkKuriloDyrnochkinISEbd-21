@@ -39,9 +39,9 @@
             // buttonRef
             // 
             this.buttonRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRef.Location = new System.Drawing.Point(1023, 212);
+            this.buttonRef.Location = new System.Drawing.Point(982, 212);
             this.buttonRef.Name = "buttonRef";
-            this.buttonRef.Size = new System.Drawing.Size(162, 45);
+            this.buttonRef.Size = new System.Drawing.Size(203, 45);
             this.buttonRef.TabIndex = 20;
             this.buttonRef.Text = "Обновить";
             this.buttonRef.UseVisualStyleBackColor = true;
@@ -50,9 +50,9 @@
             // buttonDel
             // 
             this.buttonDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDel.Location = new System.Drawing.Point(1023, 160);
+            this.buttonDel.Location = new System.Drawing.Point(982, 160);
             this.buttonDel.Name = "buttonDel";
-            this.buttonDel.Size = new System.Drawing.Size(162, 45);
+            this.buttonDel.Size = new System.Drawing.Size(203, 45);
             this.buttonDel.TabIndex = 19;
             this.buttonDel.Text = "Заблокировать";
             this.buttonDel.UseVisualStyleBackColor = true;
@@ -61,9 +61,9 @@
             // buttonUpd
             // 
             this.buttonUpd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonUpd.Location = new System.Drawing.Point(1023, 93);
+            this.buttonUpd.Location = new System.Drawing.Point(982, 93);
             this.buttonUpd.Name = "buttonUpd";
-            this.buttonUpd.Size = new System.Drawing.Size(162, 60);
+            this.buttonUpd.Size = new System.Drawing.Size(203, 60);
             this.buttonUpd.TabIndex = 18;
             this.buttonUpd.Text = "Заказы клиента";
             this.buttonUpd.UseVisualStyleBackColor = true;
@@ -81,9 +81,9 @@
             // buttonBonuses
             // 
             this.buttonBonuses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonBonuses.Location = new System.Drawing.Point(1023, 263);
+            this.buttonBonuses.Location = new System.Drawing.Point(982, 263);
             this.buttonBonuses.Name = "buttonBonuses";
-            this.buttonBonuses.Size = new System.Drawing.Size(162, 45);
+            this.buttonBonuses.Size = new System.Drawing.Size(203, 45);
             this.buttonBonuses.TabIndex = 21;
             this.buttonBonuses.Text = "Бонусы и штрафы";
             this.buttonBonuses.UseVisualStyleBackColor = true;

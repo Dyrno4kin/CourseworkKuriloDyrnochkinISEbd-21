@@ -21,11 +21,12 @@ namespace ElectronicsStoreClientViewWPF
         private readonly ICustomerService customerService;
         private readonly IIndentPaymentService paymentService;
         private readonly IBackupService backupService;
-        
+        private readonly IDataServiceDB dataService;
+
         private CustomerViewModel customer;
 
         public FormMain(IMainService service, IReptService reportService, ICustomerService customerService, 
-            IIndentPaymentService paymentService, IBackupService backupService)
+            IIndentPaymentService paymentService, IBackupService backupService, IDataServiceDB dataService)
         {
             InitializeComponent();
             this.service = service;
@@ -33,6 +34,7 @@ namespace ElectronicsStoreClientViewWPF
             this.customerService = customerService;
             this.paymentService = paymentService;
             this.backupService = backupService;
+            this.dataService = dataService;
         }
 
         private void LoadData()
@@ -56,13 +58,14 @@ namespace ElectronicsStoreClientViewWPF
                     dataGridViewMain.ItemsSource = indents;
                     if (dataGridViewMain.Columns.Count > 0)
                     {
-                    dataGridViewMain.Columns[0].Visibility = Visibility.Hidden;
-                    dataGridViewMain.Columns[1].Visibility = Visibility.Hidden;
-                    dataGridViewMain.Columns[2].Visibility = Visibility.Hidden;
-                    dataGridViewMain.Columns[6].Visibility = Visibility.Hidden;
-                    dataGridViewMain.Columns[7].Visibility = Visibility.Hidden;
-                    dataGridViewMain.Columns[1].Width = DataGridLength.Auto;
-                        }
+                        dataGridViewMain.Columns[1].Visibility = Visibility.Hidden;
+                        dataGridViewMain.Columns[2].Visibility = Visibility.Hidden;
+                        dataGridViewMain.Columns[6].Visibility = Visibility.Hidden;
+                        dataGridViewMain.Columns[7].Visibility = Visibility.Hidden;
+                        dataGridViewMain.Columns[1].Width = DataGridLength.Auto;
+
+                        labelRecommended.Content = $"К оплате приорететен заказ №{dataService.RecommendedIndent(customer.Id).Id}";
+                    }
 
                     foreach (var indent in indents)
                     {

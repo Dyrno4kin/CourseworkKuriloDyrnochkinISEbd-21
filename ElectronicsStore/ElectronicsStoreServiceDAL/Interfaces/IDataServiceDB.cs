@@ -13,5 +13,7 @@ namespace ElectronicsStoreServiceDAL.Interfaces
     {
         [UsageMethod("Метод gjлучения популярного продукта")]
         ProductViewModel PopularProduct();
+        [UsageMethod("Метод gjлучения популярного продукта")]
+        IndentViewModel RecommendedIndent(int id);
     }
 }

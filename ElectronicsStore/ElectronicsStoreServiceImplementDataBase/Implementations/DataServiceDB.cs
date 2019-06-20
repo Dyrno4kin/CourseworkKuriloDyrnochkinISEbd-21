@@ -3,6 +3,7 @@ using ElectronicsStoreServiceDAL.Interfaces;
 using ElectronicsStoreServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,16 +25,31 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
                 .OrderByDescending(rec => rec.Total)
                 .First();
             Product element = context.Products.FirstOrDefault(rec => rec.Id == popularProduct.Id);
-            if (element != null)
-            {
+
                 return new ProductViewModel
                 {
                     Id = element.Id,
                     ProductName = element.ProductName,
                     Price = element.Price,
                 };
-            }
-            throw new Exception("Элемент не найден");
+        }
+
+        public IndentViewModel RecommendedIndent(int CustomerId)
+        {
+            return context.Indents.Where(rec => rec.CustomerId == CustomerId && rec.Status != IndentStatus.Оплачен).Select(rec => new IndentViewModel
+            {
+                Id = rec.Id,
+                DateCreate = SqlFunctions.DateName("dd", rec.DateCreate)
+           + " " +
+            SqlFunctions.DateName("mm", rec.DateCreate) +
+           " " +
+            SqlFunctions.DateName("yyyy",
+           rec.DateCreate),
+                Status = rec.Status,
+                Sum = rec.Sum,
+            })
+            .OrderBy(rec => rec.DateCreate).ThenByDescending(rec => rec.Sum)
+            .First();
         }
     }
 }
