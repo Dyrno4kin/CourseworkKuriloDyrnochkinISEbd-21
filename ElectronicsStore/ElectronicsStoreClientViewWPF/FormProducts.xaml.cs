@@ -25,11 +25,13 @@ namespace ElectronicsStoreClientViewWPF
     {
 
         private readonly IProductService service;
+        private readonly IDataServiceDB dataService;
 
-        public FormProducts(IProductService service)
+        public FormProducts(IProductService service, IDataServiceDB dataService)
         {
             InitializeComponent();
             this.service = service;
+            this.dataService = dataService;
         }
 
         private void FormProducts_Load(object sender, RoutedEventArgs e)
@@ -47,6 +49,7 @@ namespace ElectronicsStoreClientViewWPF
                     dataGridViewProducts.ItemsSource = list;
                     dataGridViewProducts.Columns[0].Visibility = Visibility.Hidden;
                     dataGridViewProducts.Columns[1].Width = DataGridLength.Auto;
+                    LabelPopular.Content = $"Наиболее популярен продукт {dataService.PopularProduct().ProductName} по цене {dataService.PopularProduct().Price}.";
                 }
             }
             catch (Exception ex)

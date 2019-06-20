@@ -3,6 +3,7 @@ using ElectronicsStoreServiceDAL.BindingModel;
 
 namespace ElectronicsStoreServiceDAL.Interfaces
 {
+    [UsageInterface("Интерфейс для бэкапа базы данных")]
     public interface IBackupService
     {
         [UsageMethod("Метод создания бэкапа БД в формате JSON")]

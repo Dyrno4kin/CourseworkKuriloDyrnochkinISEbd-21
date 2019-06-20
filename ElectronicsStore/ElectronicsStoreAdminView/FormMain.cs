@@ -13,15 +13,17 @@ namespace ElectronicsStoreAdminView
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly IProductService service;
-        private IReptService reptService;
+        private readonly IReptService reptService;
         private readonly IBackupService backupService;
+        private readonly IDataServiceDB dataService;
 
-        public FormMain(IProductService service, IReptService reptService, IBackupService backupService)
+        public FormMain(IProductService service, IReptService reptService, IBackupService backupService, IDataServiceDB dataService)
         {
             InitializeComponent();
             this.service = service;
             this.reptService = reptService;
             this.backupService = backupService;
+            this.dataService = dataService;
         }
 
 
@@ -41,6 +43,7 @@ namespace ElectronicsStoreAdminView
                     dataGridView.Columns[0].Visible = false;
                     dataGridView.Columns[1].AutoSizeMode =
                     DataGridViewAutoSizeColumnMode.Fill;
+                    labelProduct.Text = $"Наиболее востребован продукт {dataService.PopularProduct().ProductName} по цене {dataService.PopularProduct().Price}.";
                 }
             }
             catch (Exception ex)
@@ -153,6 +156,12 @@ namespace ElectronicsStoreAdminView
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
                MessageBoxIcon.Error);
             }
+        }
+
+        private void товарыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormCustomers>();
+            form.ShowDialog();
         }
     }
 }

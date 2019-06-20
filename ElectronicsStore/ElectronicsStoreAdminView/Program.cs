@@ -40,8 +40,10 @@ namespace ElectronicsStoreAdminView
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<IReptService, ReptServiceDB>(new
            HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IBackupService, BackupServiceDB>(new HierarchicalLifetimeManager());
-
+            currentContainer.RegisterType<IBackupService, BackupServiceDB>(new 
+           HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IDataServiceDB, DataServiceDB>(new
+           HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

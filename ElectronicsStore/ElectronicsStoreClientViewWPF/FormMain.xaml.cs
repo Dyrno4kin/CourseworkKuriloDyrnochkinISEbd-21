@@ -21,10 +21,11 @@ namespace ElectronicsStoreClientViewWPF
         private readonly ICustomerService customerService;
         private readonly IIndentPaymentService paymentService;
         private readonly IBackupService backupService;
-
+        
         private CustomerViewModel customer;
 
-        public FormMain(IMainService service, IReptService reportService, ICustomerService customerService, IIndentPaymentService paymentService, IBackupService backupService)
+        public FormMain(IMainService service, IReptService reportService, ICustomerService customerService, 
+            IIndentPaymentService paymentService, IBackupService backupService)
         {
             InitializeComponent();
             this.service = service;
@@ -61,7 +62,7 @@ namespace ElectronicsStoreClientViewWPF
                     dataGridViewMain.Columns[6].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[7].Visibility = Visibility.Hidden;
                     dataGridViewMain.Columns[1].Width = DataGridLength.Auto;
-                    }
+                        }
 
                     foreach (var indent in indents)
                     {

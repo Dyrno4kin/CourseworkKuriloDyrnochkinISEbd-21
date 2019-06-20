@@ -69,6 +69,7 @@
     <Compile Include="ElectronicsStoreDbContext.cs" />
     <Compile Include="Implementations\BackupServiceDB.cs" />
     <Compile Include="Implementations\CustomerServiceDB.cs" />
+    <Compile Include="Implementations\DataServiceDB.cs" />
     <Compile Include="Implementations\MainServiceDB.cs" />
     <Compile Include="Implementations\IndentPaymentDB.cs" />
     <Compile Include="Implementations\ProductServiceDB.cs" />

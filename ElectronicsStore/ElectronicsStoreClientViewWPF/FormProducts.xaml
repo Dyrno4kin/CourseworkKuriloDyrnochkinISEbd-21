@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:ElectronicsStoreClientViewWPF"
         mc:Ignorable="d"
         Title="Товары" Height="367.056" Width="378.368" Loaded="FormProducts_Load">
-    <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Margin="0,0,2.491,2.679">
-        <DataGrid x:Name="dataGridViewProducts" HorizontalAlignment="Left" Height="312" VerticalAlignment="Top" Width="350" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" IsReadOnly="True" SelectionMode="Single" Margin="10,10,0,0"/>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Margin="0,33,4,2.6">
+        <DataGrid x:Name="dataGridViewProducts" HorizontalAlignment="Left" Height="312" VerticalAlignment="Top" Width="348" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" IsReadOnly="True" SelectionMode="Single" Margin="10,10,0,-20"/>
+        <Label x:Name="LabelPopular" Content="Label" HorizontalAlignment="Left" Height="15" Margin="10,-25,0,0" VerticalAlignment="Top" Width="318"/>
     </Grid>
 </Window>
