@@ -20,7 +20,7 @@
         <WindowsFormsHost HorizontalAlignment="Left" Height="353" VerticalAlignment="Top" Width="792" Margin="0,66,0,0">
             <rv:ReportViewer x:Name ="reportViewer"/>
         </WindowsFormsHost>
-        <Button x:Name="buttonMake" Content="Сформировать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="111" Margin="459,31,0,0" Height="24" Click="buttonMake_Click"/>
-        <Button x:Name="buttonToPdf" Content="в PDF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="603,31,0,0" Height="24" Click="buttonToPdf_Click"/>
+        <Button x:Name="buttonMake" Content="Сформировать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="111" Margin="444,29,0,0" Height="24" Click="buttonMake_Click"/>
+        <Button x:Name="buttonToPdf" Content="Сохранить и отправить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="575,29,0,0" Height="24" Click="buttonToPdf_Click"/>
     </Grid>
 </Window>

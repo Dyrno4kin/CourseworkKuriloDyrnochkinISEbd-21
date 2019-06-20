@@ -367,6 +367,40 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             }
         }
 
+        private void SendEmailForClients(string mailAddress, string subject, string text, string attachmentPath)
+        {
+            System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
+            SmtpClient smtpClient = null;
+            try
+            {
+                m.From = new MailAddress(ConfigurationManager.AppSettings["MailLogin"]);
+                m.To.Add(new MailAddress(mailAddress));
+                m.Subject = subject;
+                m.Body = text;
+                m.SubjectEncoding = System.Text.Encoding.UTF8;
+                m.BodyEncoding = System.Text.Encoding.UTF8;
+                m.Attachments.Add(new Attachment(attachmentPath));
+                smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.EnableSsl = true;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.Credentials = new NetworkCredential(
+                    ConfigurationManager.AppSettings["MailLogin"],
+                    ConfigurationManager.AppSettings["MailPassword"]
+                    );
+                smtpClient.Send(m);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                m = null;
+                smtpClient = null;
+            }
+        }
+
         public void SaveCustomerIndents(ReptBindingModel model)
         {
             //из ресрусов получаем шрифт для кирилицы
@@ -621,6 +655,8 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             //вставляем таблицу
             doc.Add(table);
             doc.Close();
+
+            SendEmailForClients(model.Email, "Оповещение по заказам", "", model.FileName);
         }
     }
 }

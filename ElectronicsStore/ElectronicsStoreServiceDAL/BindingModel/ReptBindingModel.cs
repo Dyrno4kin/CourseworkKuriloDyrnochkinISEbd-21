@@ -16,5 +16,7 @@ namespace ElectronicsStoreServiceDAL.BindingModel
         public DateTime? DateFrom { get; set; }
         [DataMember]
         public DateTime? DateTo { get; set; }
+        [DataMember]
+        public string Email { get; set; }
     }
 }

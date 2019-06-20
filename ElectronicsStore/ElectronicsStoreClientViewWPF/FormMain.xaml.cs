@@ -228,6 +228,7 @@ namespace ElectronicsStoreClientViewWPF
         private void отчетToolStripMenuItem_Click(object sender, RoutedEventArgs e)
         {
           var form = Container.Resolve<FormCustomerIndents>();
+          form.customerEmail = customer.Email;
           form.customerId = customer.Id;
           form.ShowDialog();
         }

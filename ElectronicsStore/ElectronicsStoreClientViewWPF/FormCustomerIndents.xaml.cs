@@ -3,18 +3,7 @@ using ElectronicsStoreServiceDAL.Interfaces;
 using Microsoft.Reporting.WinForms;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Unity;
 
 namespace ElectronicsStoreClientViewWPF
@@ -28,6 +17,7 @@ namespace ElectronicsStoreClientViewWPF
         public IUnityContainer Container { get; set; }
 
         public int customerId { get; set; }
+        public String customerEmail { get; set; }
 
         private readonly IReptService service;
 
@@ -90,6 +80,7 @@ namespace ElectronicsStoreClientViewWPF
                 {
                     var model = (new ReptBindingModel
                     {
+                        Email = customerEmail,
                         FileName = sfd.FileName,
                         DateFrom = dateTimePickerFrom.SelectedDate,
                         DateTo = dateTimePickerTo.SelectedDate
@@ -102,6 +93,18 @@ namespace ElectronicsStoreClientViewWPF
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void buttonSendClick(object sender, RoutedEventArgs e)
+        {
+            var model = (new ReptBindingModel
+            {
+                Email = customerEmail,
+                FileName = @"D:\test.pdf",
+                DateFrom = dateTimePickerFrom.SelectedDate,
+                DateTo = dateTimePickerTo.SelectedDate
+            });
+            service.SaveCustomerIndentsForClients(model, customerId);
         }
     }
 }
