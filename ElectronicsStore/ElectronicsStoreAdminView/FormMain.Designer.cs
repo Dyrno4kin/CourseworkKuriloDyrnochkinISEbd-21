@@ -42,6 +42,7 @@
             this.бэкапВФорматеJsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.бэкапВФорматеXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelProduct = new System.Windows.Forms.Label();
+            this.графикToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -132,7 +133,8 @@
             // отчётыToolStripMenuItem
             // 
             this.отчётыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.списокТоваровWordToolStripMenuItem});
+            this.списокТоваровWordToolStripMenuItem,
+            this.графикToolStripMenuItem});
             this.отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
             this.отчётыToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
             this.отчётыToolStripMenuItem.Text = "Отчёты";
@@ -175,6 +177,13 @@
             this.labelProduct.Size = new System.Drawing.Size(0, 17);
             this.labelProduct.TabIndex = 25;
             // 
+            // графикToolStripMenuItem
+            // 
+            this.графикToolStripMenuItem.Name = "графикToolStripMenuItem";
+            this.графикToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.графикToolStripMenuItem.Text = "График";
+            this.графикToolStripMenuItem.Click += new System.EventHandler(this.графикToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -216,5 +225,6 @@
         private System.Windows.Forms.ToolStripMenuItem бэкапВФорматеJsonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem бэкапВФорматеXMLToolStripMenuItem;
         private System.Windows.Forms.Label labelProduct;
+        private System.Windows.Forms.ToolStripMenuItem графикToolStripMenuItem;
     }
 }

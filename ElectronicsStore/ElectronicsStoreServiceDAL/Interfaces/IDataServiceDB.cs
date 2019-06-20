@@ -11,9 +11,11 @@ namespace ElectronicsStoreServiceDAL.Interfaces
     [UsageInterface("Интерфейс для работы с клиентами")]
     public interface IDataServiceDB
     {
-        [UsageMethod("Метод gjлучения популярного продукта")]
+        [UsageMethod("Метод получения популярного продукта")]
         ProductViewModel PopularProduct();
-        [UsageMethod("Метод gjлучения популярного продукта")]
+        [UsageMethod("Метод получения рекомендуемого заказа к оплате")]
         IndentViewModel RecommendedIndent(int id);
+        [UsageMethod("Метод gjлучения популярного продукта")]
+        List<IndentViewModel> DataIndent();
     }
 }

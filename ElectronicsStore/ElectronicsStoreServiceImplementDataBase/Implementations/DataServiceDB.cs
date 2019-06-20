@@ -3,6 +3,7 @@ using ElectronicsStoreServiceDAL.Interfaces;
 using ElectronicsStoreServiceDAL.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,39 @@ namespace ElectronicsStoreServiceImplementDataBase.Implementations
             })
             .OrderBy(rec => rec.DateCreate).ThenByDescending(rec => rec.Sum)
             .First();
+        }
+
+        public List<IndentViewModel> DataIndent()
+        {
+            int max = DateTime.Now.Month;
+            int min = DateTime.Now.AddMonths(-1).Month;
+            var indents = context.Indents
+           .Include(rec => rec.IndentProducts)
+           .Where(rec => rec.DateCreate.Month > min &&
+           rec.DateCreate.Month <= max)
+            .Select(rec => new IndentViewModel
+            {
+                Id = rec.Id,
+                DateCreate = SqlFunctions.DateName("dd", rec.DateCreate)
+           + " " +
+            SqlFunctions.DateName("mm", rec.DateCreate) +
+           " " +
+            SqlFunctions.DateName("yyyy",
+           rec.DateCreate),
+                
+                IndentProducts = context.IndentProducts
+                .Where(recPC => recPC.IndentId == rec.Id)
+                .Select(recPC => new IndentProductViewModel
+                {
+                    IndentId = recPC.IndentId,
+                    ProductId = recPC.ProductId,
+                    Count = recPC.Count
+                })
+                .ToList()
+                
+            }).ToList();
+
+            return indents;
         }
     }
 }
