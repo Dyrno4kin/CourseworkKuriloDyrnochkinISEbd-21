@@ -157,11 +157,6 @@ namespace ElectronicsStoreAdminView
                MessageBoxIcon.Error);
             }
         }
-
-        private void товарыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = Container.Resolve<FormCustomers>();
-            form.ShowDialog();
-        }
+        
     }
 }
