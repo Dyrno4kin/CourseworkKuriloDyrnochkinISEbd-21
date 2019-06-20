@@ -39,7 +39,7 @@
             // buttonRef
             // 
             this.buttonRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRef.Location = new System.Drawing.Point(982, 212);
+            this.buttonRef.Location = new System.Drawing.Point(939, 212);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(203, 45);
             this.buttonRef.TabIndex = 20;
@@ -50,7 +50,7 @@
             // buttonDel
             // 
             this.buttonDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDel.Location = new System.Drawing.Point(982, 160);
+            this.buttonDel.Location = new System.Drawing.Point(939, 160);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(203, 45);
             this.buttonDel.TabIndex = 19;
@@ -61,7 +61,7 @@
             // buttonUpd
             // 
             this.buttonUpd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonUpd.Location = new System.Drawing.Point(982, 93);
+            this.buttonUpd.Location = new System.Drawing.Point(939, 93);
             this.buttonUpd.Name = "buttonUpd";
             this.buttonUpd.Size = new System.Drawing.Size(203, 60);
             this.buttonUpd.TabIndex = 18;
@@ -81,7 +81,7 @@
             // buttonBonuses
             // 
             this.buttonBonuses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonBonuses.Location = new System.Drawing.Point(982, 263);
+            this.buttonBonuses.Location = new System.Drawing.Point(939, 263);
             this.buttonBonuses.Name = "buttonBonuses";
             this.buttonBonuses.Size = new System.Drawing.Size(203, 45);
             this.buttonBonuses.TabIndex = 21;
@@ -93,7 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1230, 409);
+            this.ClientSize = new System.Drawing.Size(1166, 409);
             this.Controls.Add(this.buttonBonuses);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonDel);

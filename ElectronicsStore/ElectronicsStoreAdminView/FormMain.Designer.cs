@@ -48,7 +48,7 @@
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(675, 246);
+            this.buttonRef.Location = new System.Drawing.Point(615, 231);
             this.buttonRef.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(115, 46);
@@ -59,7 +59,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(675, 194);
+            this.buttonDelete.Location = new System.Drawing.Point(615, 179);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(115, 46);
@@ -70,7 +70,7 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(675, 142);
+            this.buttonChange.Location = new System.Drawing.Point(615, 127);
             this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(115, 46);
@@ -81,7 +81,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(675, 90);
+            this.buttonAdd.Location = new System.Drawing.Point(615, 75);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(115, 46);
@@ -93,11 +93,11 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(35, 65);
+            this.dataGridView.Location = new System.Drawing.Point(22, 45);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(535, 286);
+            this.dataGridView.Size = new System.Drawing.Size(552, 298);
             this.dataGridView.TabIndex = 19;
             // 
             // menuStrip1
@@ -110,7 +110,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(907, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(754, 28);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -179,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 452);
+            this.ClientSize = new System.Drawing.Size(754, 448);
             this.Controls.Add(this.labelProduct);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonDelete);

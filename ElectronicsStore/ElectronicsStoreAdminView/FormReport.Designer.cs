@@ -65,7 +65,7 @@
             // 
             // buttonToPdf
             // 
-            this.buttonToPdf.Location = new System.Drawing.Point(721, 12);
+            this.buttonToPdf.Location = new System.Drawing.Point(774, 12);
             this.buttonToPdf.Name = "buttonToPdf";
             this.buttonToPdf.Size = new System.Drawing.Size(83, 38);
             this.buttonToPdf.TabIndex = 10;
@@ -77,7 +77,7 @@
             // 
             this.buttonMake.Location = new System.Drawing.Point(598, 12);
             this.buttonMake.Name = "buttonMake";
-            this.buttonMake.Size = new System.Drawing.Size(117, 38);
+            this.buttonMake.Size = new System.Drawing.Size(170, 38);
             this.buttonMake.TabIndex = 9;
             this.buttonMake.Text = "Сформировать";
             this.buttonMake.UseVisualStyleBackColor = true;
@@ -115,7 +115,7 @@
             // 
             // buttonSendMail
             // 
-            this.buttonSendMail.Location = new System.Drawing.Point(810, 14);
+            this.buttonSendMail.Location = new System.Drawing.Point(863, 12);
             this.buttonSendMail.Name = "buttonSendMail";
             this.buttonSendMail.Size = new System.Drawing.Size(173, 36);
             this.buttonSendMail.TabIndex = 14;
@@ -145,7 +145,7 @@
             this.Controls.Add(this.dateTimePickerTo);
             this.Controls.Add(this.dateTimePickerFrom);
             this.Name = "FormReport";
-            this.Text = "FormReport";
+            this.Text = "Отчёты";
             this.Load += new System.EventHandler(this.FormReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.IndentViewModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IndentPaymentViewModelBindingSource)).EndInit();

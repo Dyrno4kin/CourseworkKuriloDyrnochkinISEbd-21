@@ -35,7 +35,7 @@
             // 
             // buttonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(142, 389);
+            this.buttonRef.Location = new System.Drawing.Point(42, 400);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(115, 46);
             this.buttonRef.TabIndex = 16;
@@ -49,18 +49,18 @@
             this.dataGridView.Location = new System.Drawing.Point(21, 12);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(1117, 371);
+            this.dataGridView.Size = new System.Drawing.Size(987, 371);
             this.dataGridView.TabIndex = 13;
             // 
             // FormIndentCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1289, 458);
+            this.ClientSize = new System.Drawing.Size(1042, 457);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.dataGridView);
             this.Name = "FormIndentCustomer";
-            this.Text = "Клиенты";
+            this.Text = "Заказы клиента";
             this.Load += new System.EventHandler(this.FormCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

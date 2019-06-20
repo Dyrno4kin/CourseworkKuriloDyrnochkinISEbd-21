@@ -35,7 +35,7 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(54, 34);
+            this.dataGridView.Location = new System.Drawing.Point(23, 12);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(611, 341);
@@ -45,7 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 401);
+            this.ClientSize = new System.Drawing.Size(659, 399);
             this.Controls.Add(this.dataGridView);
             this.Name = "FormIndentProduct";
             this.Text = "Товары заказа";
